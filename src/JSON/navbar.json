@@ -1,0 +1,25 @@
+{
+    "school-name": "Avicenna",
+    "menu-items": [
+        {
+            "id": "m1",
+            "label": "Home",
+            "link": "home"
+        },
+        {
+            "id": "m2",
+            "label": "Product",
+            "link": "product"
+        },
+        {
+            "id": "m3",
+            "label": "Pricing",
+            "link": "pricing"
+        },
+        {
+            "id": "m4",
+            "label": "Contact",
+            "link": "contact"
+        }
+    ]
+}

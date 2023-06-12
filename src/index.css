@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;500&display=swap');
+
+* {
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  font-family: Montserrat;
+  letter-spacing: 0.20000000298023224px;
+
+}
+
+body {
+  top: 0;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+img {
+  /* Not selectable */
+  -webkit-user-select: none; /* Untuk browser WebKit seperti Chrome, Safari */
+  -moz-user-select: none; /* Untuk browser Firefox */
+  -ms-user-select: none; /* Untuk browser Internet Explorer/Edge */
+  user-select: none;
+}
+
+
+
+/* Material Icons */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+  /* src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
+    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
+    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype'); */
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+
+  /* Not selectable */
+  -webkit-user-select: none; /* Untuk browser WebKit seperti Chrome, Safari */
+  -moz-user-select: none; /* Untuk browser Firefox */
+  -ms-user-select: none; /* Untuk browser Internet Explorer/Edge */
+  user-select: none;
+}
