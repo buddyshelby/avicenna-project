@@ -1,17 +1,36 @@
 import navbarJson from '../../JSON/navbar.json'
-import styles from './navbar.module.css'
+import desktopStyles from './navbar.module.css'
+import mobileStyles from './mobile-navbar.module.css'
+import { ResponsiveComponent, useWindowSize } from '../../Function/SeparateFunction'
+import { useEffect, useState } from 'react'
 
 const Navbar = () => {
+
+    const [windowWidth, windowHeight] = useWindowSize()
+    const [styles, setStyles] = useState({})
+    const [isMobile, setIsMobile] = useState(false)
+
+    useEffect(() => {
+        if (windowWidth > 600 ) {
+            setIsMobile(false)
+            setStyles(desktopStyles)
+        } else {
+            setIsMobile(true)
+            setStyles(mobileStyles)
+        }
+    }, [windowWidth])
+
     return (
+        <>
         <nav id={styles.navbar}>
             <div className={styles['navbar--container']}>
                 <div className={styles['navbar--wrapper']}>
                     <div className={styles['navbar--content-left']}>
                         <div className={styles['navbar--school-name']}>
-                            <h4>{navbarJson['school-name']}</h4>
+                            <h4 style={{ fontSize: isMobile && `${ResponsiveComponent(600, 24, 280, 14, windowWidth)}px` }}>{navbarJson['school-name']}</h4>
                         </div>
                         <div className={styles['navbar--menus-list']}>
-                            <ul>
+                            <ul style={{ fontSize: isMobile && `${ResponsiveComponent(600, 14, 280, 11, windowWidth)}px` }}>
                                 {navbarJson['menu-items'].map((item, index) => (
                                     <li key={index}>
                                         <span>
@@ -22,19 +41,10 @@ const Navbar = () => {
                             </ul>
                         </div>
                     </div>
-                    {/* <div className={styles['navbar--content-right']}>
-                        <div className={styles['navbar--button']}>
-                            <div className={styles['navbar--button-object']}>
-                                Login
-                                <span className="material-icons">
-                                    east
-                                </span>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </nav>
+        </>
     )
 }
 
