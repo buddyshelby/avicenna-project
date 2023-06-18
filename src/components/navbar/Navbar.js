@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 
 const Navbar = () => {
 
+    // eslint-disable-next-line
     const [windowWidth, windowHeight] = useWindowSize()
     const [styles, setStyles] = useState({})
     const [isMobile, setIsMobile] = useState(false)
