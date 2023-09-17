@@ -6,7 +6,7 @@ import imageStorage from '../../assets/Signup/imageStorage'
 // import ShadowBackground from '../../components/background/ShadowBackground'
 // eslint-disable-next-line
 import SeparateFunction, { ResponsiveComponent, useWindowSize } from '../../Function/SeparateFunction'
-// import { useFetcher } from 'react-router-dom';
+import { useFetcher } from 'react-router-dom';
 // eslint-disable-next-line
 import { useEffect, useReducer, useRef, useState } from 'react';
 
@@ -14,6 +14,7 @@ const Signup = () => {
 
     // eslint-disable-next-line
     const [windowWidth, windowHeight] = useWindowSize()
+    const fetcher = useFetcher();
     const [styles, setStyles] = useState({})
     // eslint-disable-next-line
     const [isMobile, setIsMobile] =  useState(false)
@@ -159,11 +160,13 @@ const Signup = () => {
                 <div className={styles['signup--container']}>
                     <div className={styles['signup--wrapper']}>
                         <div className={styles['signup--content--left']} style={{ '--signupBG': `url(${imageStorage.signupBG})` }}>
-                        
+                            <div className={styles['school-logo']}>
+                                <img src={imageStorage.schoolLogo} alt="" />
+                            </div>
                         </div>
                         {/* {String(ResponsiveComponent(1080, 80, 600, 40, windowWidth))} */}
                         <div className={styles['signup--content--right']} style={responsive.mobile.form.outForm}>
-                            <div className={styles['signup--form']} style={responsive.mobile.form.insideForm}>
+                            <fetcher.Form method='post' action='/signup' className={styles['signup--form']} style={responsive.mobile.form.insideForm}>
                                 <div className={styles['signup--form--header']}>
                                     <span style={responsive.mobile.form.header}>Create Your Account</span>
                                 </div>
@@ -199,7 +202,7 @@ const Signup = () => {
                                 <div className={styles['signup--form--register']}>
                                     <input style={{ marginTop: !isMobile && `${ResponsiveComponent(1080, 10, 600, 5, windowWidth)}px`, fontSize: !isMobile && `${ResponsiveComponent(1080, 16, 600, 12, windowWidth)}px`, filter: state.enableRegister && 'grayscale(0)', cursor: state.enableRegister && 'pointer' }} type="submit" value="Register" />
                                 </div>
-                            </div>
+                            </fetcher.Form>
                         </div>
                     </div>
                 </div>

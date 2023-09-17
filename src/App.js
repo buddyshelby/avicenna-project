@@ -2,6 +2,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
 import Login, { action as loginAction } from './views/Login/Login'
 import Signup from './views/Signup/Signup'
+import ResetPassword from './views/ResetPassword/ResetPassword'
+import NewPassword from './views/ResetPassword/NewPassword/NewPassword'
 import Dashboard, { action as dashboardAction } from './views/Dashboard/Dashboard'
 // import Navbar from './components/navbar/Navbar'
 import RootLayout from './pages/RootPage'
@@ -22,6 +24,16 @@ const router = createBrowserRouter([
       {
         path: 'signup',
         element: <Signup />,
+        // action: loginAction,
+      },
+      {
+        path: 'reset_password',
+        element: <ResetPassword />,
+        // action: loginAction,
+      },
+      {
+        path: 'new_password',
+        element: <NewPassword />,
         // action: loginAction,
       },
       {
