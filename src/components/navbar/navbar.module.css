@@ -36,17 +36,20 @@
 }
 
 .navbar--school-name {
-    width: 15%;
+    width: 10%;
     padding: 0 15% 0 0;
+    /* background-color: aquamarine; */
 }
 
 .navbar--school-name > h4 {
     width: 100%;
     font-size: 24px;
+    font-family: Montserrat;
 }
 
 .navbar--menus-list {
-    width: 85%;
+    width: 90%;
+    font-family: Montserrat;
     /* background-color: blue; */
 }
 
