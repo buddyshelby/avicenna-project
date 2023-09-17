@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react"
+import { useLayoutEffect, useState } from "react"
 // import loginStyles from '../views/Login/login.module.css'
 
 export const useWindowSize = () => {
@@ -15,14 +15,6 @@ export const useWindowSize = () => {
 }
 
 const SeperateFunction = (props) => {
-
-    // eslint-disable-next-line no-unused-vars
-    const [windowWidth, windowHeight] = useWindowSize()
-
-    useEffect(() => {
-
-    }, [windowWidth])
-
     return (
         <></>
     )

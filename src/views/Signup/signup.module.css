@@ -1,0 +1,160 @@
+#signup {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    /* background-color: chartreuse; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* padding: 5%; */
+    /* background-image: var(--signupBG);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* padding: 8% 0 2% 0; */
+}
+
+.signup--container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: chocolate; */
+}
+
+.signup--wrapper {
+    width: 100%;
+    /* max-width: 1240px; */
+    height: 100%;
+    display: flex;
+    /* background-color: yellow; */
+}
+
+.signup--content--left {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-image: var(--signupBG);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.school-logo {
+    width: 150px;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 50%;
+    margin: 40px 0 0 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.school-logo > img {
+    width: 100px;
+    height: auto;
+    margin-right: 5px;
+}
+
+
+
+.signup--content--right {
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 80px; */
+    /* padding: 40px; */
+    /* background-color: aqua; */
+}
+.signup--form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 14px;
+    /* padding: 40px 14px; */
+    padding: 20px 7px;
+    box-shadow: 13.47732px 13.47732px 36.38875px 0px rgba(51, 95, 119, 0.26);
+    /* background-color: red; */
+}
+.signup--form--header {
+    width: max-content;
+}
+.signup--form--header > span {
+    color: #0E4A67;
+    font-family: 'Source Sans 3', sans-serif;
+    /* font-size: 26px; */
+    font-size: 16px;
+    font-weight: 700;
+}
+.signup--form--have-account {
+    height: auto;
+}
+.signup--form--have-account > span:nth-child(1) {
+    font-family: 'Source Sans 3', sans-serif;
+    /* font-size: 11px; */
+    font-size: 8px;
+    font-weight: 400;
+    color: #37677E;
+}
+.signup--form--have-account > span:nth-child(2) {
+    font-family: 'Source Sans 3', sans-serif;
+    /* font-size: 11px; */
+    font-size: 8px;
+    font-weight: 400;
+    color: #EE5757;
+}
+.signup--form--name,
+.signup--form--no-hp,
+.signup--form--email,
+.signup--form--password,
+.signup--form--confirm-password,
+.signup--form--register {
+    /* margin-top: 10px; */
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Source Sans 3', sans-serif;
+    /* font-size: 16px; */
+    font-size: 10px;
+    font-weight: 400;
+    color: #207198;
+}
+.signup--form--name > input,
+.signup--form--no-hp > input,
+.signup--form--email > input,
+.signup--form--password > input,
+.signup--form--confirm-password > input,
+.signup--form--register > input,
+.signup--form--name > input {
+    width: 90%;
+    background-color: transparent !important;
+    border: 1px solid #6FCF97;
+    border-radius: 5px;
+    outline: none;
+    font-family: 'Roboto';
+    font-weight: 100;
+    color: #37677E;
+    font-family: 'Source Sans 3', sans-serif;
+    /* font-size: 16px; */
+    font-size: 10px;
+    font-weight: 400;
+    /* padding: 10px; */
+    padding: 5px;
+    margin-top: 2px;
+}
+.signup--form--register > input {
+    width: 100%;
+    background: linear-gradient(to right, #FE904B, #FB724C 90%);
+    color: white;
+    border: none;
+    /* font-size: 16px; */
+    font-size: 12px;
+    font-weight: 700;
+    filter: grayscale(1);
+    cursor: not-allowed;
+    /* margin-top: 10px; */
+    margin-top: 5px;
+    padding: 5px;
+    transition: 0.4s;
+}

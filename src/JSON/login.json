@@ -7,7 +7,9 @@
         "title": "Sign in",
         "input_1": "abc@email.com",
         "input_2": "Your password",
-        "span_1": "Remember Me",
+        "span_1":"Forgot Password",
+        "span_2":"SIGN UP",
+        "span_3": "Remember Me",
         "button_1": "SIGN IN"
     }
 }
