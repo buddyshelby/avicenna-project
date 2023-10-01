@@ -3,7 +3,15 @@ import DashNav from '../../components/dashboard/DashNav';
 import dashJson from '../../JSON/dashboard.json'
 import { useEffect, useRef, useState } from 'react';
 import dataStorage from '../../assets/account/getAccountAsset'
-import { useWindowSize, ResponsiveComponent } from '../../Function/SeparateFunction'
+// eslint-disable-next-line
+import { useWindowSize, ResponsiveComponent, convertDate} from '../../Function/SeparateFunction'
+// eslint-disable-next-line
+import { requestAPI as handleRequest, reset } from '../../Function/authSlice'
+// eslint-disable-next-line
+import { defer, json, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux'
+// eslint-disable-next-line
+import { store } from '../../Function/store'
 
 const Dashboard = () => {
 
@@ -18,13 +26,60 @@ const Dashboard = () => {
     const paginationRef = useRef('')
     // eslint-disable-next-line
     const [width, height] = useWindowSize()
+    const navigate = useNavigate()
+    const { isError } = useSelector(state => state.auth);
+    const dispatch = useDispatch()
+
+    // useEffect(() => {
+    //     const postData = {
+    //         'apiUrl': 'http://localhost:5000/me',
+    //         'method': 'get'
+    //     }
+    //     dispatch(handleRequest(postData))
+    // },[dispatch])
+
+    // useEffect(() => {
+	// 	if (isError) {
+	// 		console.log('whyyyyy????????');
+	// 		// navigate('/');
+	// 	}
+	// }, [isError, navigate]);
+
+    // useEffect(() => {
+    //     if (store.getState().auth.user) {
+    //         const expiresDate = new Date()
+    //         expiresDate.setMinutes(expiresDate.getMinutes() + 1)
+
+    //         const dataAccount = {
+    //             id_user: store.getState().auth.user.id_user,
+    //             expiresDate: convertDate(expiresDate, 'Asia/Jakarta')
+    //         }
+    //         localStorage.setItem('dataAccount', JSON.stringify(dataAccount));
+    //     } else if (Boolean(localStorage.getItem('dataAccount')) === false) {
+    //         navigate('/')
+    //     }
+
+    //     if (Boolean(localStorage.getItem('dataAccount')) === true) {
+    //         const expiresDate = new Date(JSON.parse(localStorage.getItem('dataAccount')).expiresDate)
+    //         const currentDate = new Date(convertDate(new Date()))
+    //         console.log(expiresDate)
+    //         if ((JSON.parse(localStorage.getItem('dataAccount')).id_user && currentDate < expiresDate)) {
+    //             console.log(store.getState().auth.user);
+    //             navigate('/dashboard');
+    //         } else {
+    //             navigate('/');
+    //         }
+    //     }
+    // // eslint-disable-next-line
+    // },[])
 
     useEffect(() => {
+
         let paginationTemp = []
         for (let i=1;i <= totalBoxContent;i++) {
             (paginationTemp.length < totalBoxContent ) && paginationTemp.push(i)
         }
-        
+        // user !== null && console.log(user.payload);
         setPaginationNumber(paginationTemp);
     },
     // eslint-disable-next-line
@@ -102,7 +157,6 @@ const Dashboard = () => {
                                     <div className={styles['dashboard--box-content--data']} ref={contentBoxSizeRef} style={{ height: (paginationRef.current && lastContentBoxRef.current && contentBoxSizeRef.current && (paginationRef.current.offsetTop > lastContentBoxRef.current.offsetTop + lastContentBoxRef.current.clientHeight)) && `calc(${(height - paginationRef.current.clientHeight) - contentBoxSizeRef.current.offsetTop}px - 5px)` }}>
                                         {// eslint-disable-next-line
                                         boxContent.map((data, index) => {
-                                            console.log(paginationRef.current.offsetTop);
                                             if (index < boxContent.length && index < totalBoxContent && index > paginationActive - 1) {
                                                 return (
                                                         <div className={styles['dashboard--box-content--data--wrapper']} key={index} ref={lastContentBoxRef}>
@@ -173,3 +227,35 @@ export const action = async ({ request }) => {
     console.log(email)
     return { message: 'Signup successful!' };
 }
+
+// const loadDashboard = async () => {
+//     const postData = {
+//         'apiUrl': 'http://localhost:5000/me',
+//         'method': 'get',
+//     }
+//     const response = await handlePostRequest(postData);
+//     console.log(response);
+
+//     if (!response.ok) {
+//         // return { isError: true, message: 'Could not fetch events.' };
+//         // throw new Response(JSON.stringify({ message: 'Could not fetch events.' }), {
+//         //   status: 500,
+//         // });
+//         throw json(
+//         { message: 'Could not fetch Dashboard.' },
+//         {
+//             status: 500,
+//         }
+//         );
+//     } else {
+//         const resData = await response.data;
+//         console.log(resData);
+//         return resData;
+//     }
+// }
+
+// export const loader = () => {
+//     return defer({
+//         events: loadDashboard(),
+//     });
+// }
