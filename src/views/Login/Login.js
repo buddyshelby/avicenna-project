@@ -4,9 +4,48 @@ import loginJson from '../../JSON/login.json'
 import Navbar from '../../components/navbar/Navbar'
 import imageStorage from '../../assets/Login/imageStorage'
 import ShadowBackground from '../../components/background/ShadowBackground'
-import SeparateFunction, { ResponsiveComponent, useWindowSize } from '../../Function/SeparateFunction'
-import { useFetcher } from 'react-router-dom';
+import SeparateFunction, { ResponsiveComponent, useWindowSize, convertDate } from '../../Function/SeparateFunction'
+// eslint-disable-next-line
+import { requestAPI as handlePostRequest, reset } from '../../Function/authSlice'
+// eslint-disable-next-line
+import { redirect, useFetcher, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+// eslint-disable-next-line
+import { store } from '../../Function/store'
+import { useDispatch, useSelector } from 'react-redux';
+
+export const Action = async ({ request }) => {
+
+    const data = await request.formData();
+    const email = data.get('email');
+    const password = data.get('password');
+    // const dataUser = store.getState().auth.user
+    
+    // eslint-disable-next-line
+    const postData = {
+        'email': email,
+        'password': password,
+        'apiUrl': 'http://localhost:5000/login',
+        'method': 'post'
+    }
+    
+    store.dispatch(handlePostRequest(postData))
+    
+    // eslint-disable-next-line
+    // const { user, isError, isSuccess, isLoading, message } = usesSelector(
+	// 	(state) => state.auth
+	// );
+
+	// useEffect(() => {
+	// 	if (user || isSuccess) {
+	// 		navigate('/dashboard');
+	// 	}
+	// 	dispatch(reset());
+	// }, [user, isSuccess, dispatch, navigate]);
+
+    return {msg:'ok'}
+    // return redirect('/dashboard')
+}
 
 const Login = () => {
 
@@ -18,12 +57,45 @@ const Login = () => {
     const [isMobile, setIsMobile] =  useState(false)
     const [showModal, setShowModal] = useState(false)
     const [isRemember, setIsRemember] = useState(false)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    // eslint-disable-next-line
+    const { user, isError, isSuccess, isLoading, message } = useSelector(
+		(state) => state.auth
+	);
+
+	useEffect(() => {
+        
+        const expiresDate = localStorage.getItem('dataAccount') && new Date(JSON.parse(localStorage.getItem('dataAccount')).expiresDate)
+        
+        // if (expiresDate !== null) {
+        //     const currentDate = new Date(convertDate(new Date()))
+        //     console.log(expiresDate)
+        //     if ((JSON.parse(localStorage.getItem('dataAccount')).id_user && currentDate < expiresDate)) {
+        //         navigate('/dashboard');
+        //     } else {
+        //         localStorage.clear();
+        //     }
+        // }
+
+        if (user || isSuccess) {
+            navigate('/dashboard');
+        }
+
+	}, [user, isSuccess, navigate, dispatch]);
 
     const loginFormJson = loginJson.form
     const handleSubmit = (e) => {
         e.preventDefault();
         subButton.current.click()
     }
+
+    const handlePrevent = (e) => {
+        e.preventDefault();
+        console.log(e);
+    }
+
     const closeModal = (e) => {
         if (e.target.className === styles['login--content-right']) {
             setShowModal(false);
@@ -110,13 +182,13 @@ const Login = () => {
                             </div>}
                         </div>
                         {!isMobile && <div className={styles['login--content-right']}>
-                            <fetcher.Form method='post' action='/login' className={styles['login--content-form']} style={{ width: !isMobile && `${ResponsiveComponent(1080, 300, 600, 150, windowWidth)}px` }}>
+                            <fetcher.Form method='post' action='/login' onSubmit={e => handlePrevent} className={styles['login--content-form']} style={{ width: !isMobile && `${ResponsiveComponent(1080, 300, 600, 150, windowWidth)}px` }}>
                                 <div className={styles['login--content-form--title']}>
                                     <h4 style={{ fontSize: !isMobile && `${ResponsiveComponent(1080, 32, 600, 22, windowWidth)}px` }}>{loginFormJson.title}</h4>
                                 </div>
                                 <div className={styles['login--content-form--input-email']}>
                                     <span><img src={imageStorage.emailIcon} alt="" /></span>
-                                    <input type="email" name="email" placeholder={loginFormJson.input_1} autoComplete="email" style={{ fontSize: !isMobile && `${ResponsiveComponent(1080, 14, 600, 7, windowWidth)}px` }} />
+                                    <input type="username" name="email" placeholder={loginFormJson.input_1} autoComplete="username" style={{ fontSize: !isMobile && `${ResponsiveComponent(1080, 14, 600, 7, windowWidth)}px` }} />
                                 </div>
                                 <div className={styles['login--content-form--input-password']}>
                                     <span><img src={imageStorage.passIcon} alt="" /></span>
@@ -158,12 +230,3 @@ const Login = () => {
 }
 
 export default Login
-
-export const action = async ({ request }) => {
-    const data = await request.formData();
-    const email = data.get('password');
-    
-    // send to backend newsletter server ...
-    console.log(email)
-    return { message: 'Signup successful!' };
-}

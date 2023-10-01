@@ -125,12 +125,12 @@ const NewPassword = () => {
                                     <span style={responsive.mobile.form.header}>Enter Your New Password</span>
                                 </div>
                                 <div className={styles['newPassword--form--password']} style={responsive.mobile.form.label}>
-                                    <span>Password</span>
+                                    <span>New Password</span>
                                     <input onChange={(e) => {validationChecker(e,'PASSWORD')}} style={{ padding: !isMobile && `${ResponsiveComponent(1080, 10, 600, 5, windowWidth)}px`, fontSize: !isMobile && `${ResponsiveComponent(1080, 16, 600, 10, windowWidth)}px`, borderColor: !state.validPass && '#EE5757' }} type="password" name="password" placeholder="Input Password" autoComplete="password" />
                                     {!state.validPass && <span style={{ color: '#FF0C3E', fontSize: `${ResponsiveComponent(1080, 12, 600, 8, windowWidth)}px` }}>Please at least use 1 Number.<br/>Minimum's 15 character.</span>}
                                 </div>
                                 <div className={styles['newPassword--form--confirm-password']} style={responsive.mobile.form.label}>
-                                    <span>Confirm Password</span>
+                                    <span>Confirm New Password</span>
                                     <input onChange={(e) => {validationChecker(e,'CONFIRM PASSWORD')}} style={{ padding: !isMobile && `${ResponsiveComponent(1080, 10, 600, 5, windowWidth)}px`, fontSize: !isMobile && `${ResponsiveComponent(1080, 16, 600, 10, windowWidth)}px`, borderColor: (!state.validConfirmPass || !state.validConfirmPass === 'INIT') && '#EE5757' }} type="password" name="password" placeholder="Input Confirm Password" autoComplete="password" />
                                     {(!state.validConfirmPass || !state.validConfirmPass === 'INIT') && <span style={{ color: '#FF0C3E', fontSize: `${ResponsiveComponent(1080, 12, 600, 8, windowWidth)}px` }}>Your current password doesn't matches.</span>}
                                 </div>
