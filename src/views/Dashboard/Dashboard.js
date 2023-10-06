@@ -1,20 +1,11 @@
 import styles from './dashboard.module.css'
-import DashNav from '../../components/dashboard/DashNav';
-import dashJson from '../../JSON/dashboard.json'
+import DashNav from '../components/dashboard/DashNav';
+import dashJson from '../../model/JSON/dashboard.json'
 import { useEffect, useRef, useState } from 'react';
 import dataStorage from '../../assets/account/getAccountAsset'
-// eslint-disable-next-line
-import { useWindowSize, ResponsiveComponent, convertDate} from '../../Function/SeparateFunction'
-// eslint-disable-next-line
-import { requestAPI as handleRequest, reset } from '../../Function/authSlice'
-// eslint-disable-next-line
-import { defer, json, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux'
-// eslint-disable-next-line
-import { store } from '../../Function/store'
+import { useWindowSize, ResponsiveComponent} from '../../Function/SeparateFunction'
 
 const Dashboard = () => {
-
     const accountJson = dashJson.account
     const boxContent = dashJson['box-content']
     const totalBoxContent = Math.ceil(boxContent.length / 2)
@@ -24,54 +15,7 @@ const Dashboard = () => {
     const contentBoxSizeRef = useRef('')
     const lastContentBoxRef = useRef('')
     const paginationRef = useRef('')
-    // eslint-disable-next-line
     const [width, height] = useWindowSize()
-    const navigate = useNavigate()
-    const { isError } = useSelector(state => state.auth);
-    const dispatch = useDispatch()
-
-    // useEffect(() => {
-    //     const postData = {
-    //         'apiUrl': 'http://localhost:5000/me',
-    //         'method': 'get'
-    //     }
-    //     dispatch(handleRequest(postData))
-    // },[dispatch])
-
-    // useEffect(() => {
-	// 	if (isError) {
-	// 		console.log('whyyyyy????????');
-	// 		// navigate('/');
-	// 	}
-	// }, [isError, navigate]);
-
-    // useEffect(() => {
-    //     if (store.getState().auth.user) {
-    //         const expiresDate = new Date()
-    //         expiresDate.setMinutes(expiresDate.getMinutes() + 1)
-
-    //         const dataAccount = {
-    //             id_user: store.getState().auth.user.id_user,
-    //             expiresDate: convertDate(expiresDate, 'Asia/Jakarta')
-    //         }
-    //         localStorage.setItem('dataAccount', JSON.stringify(dataAccount));
-    //     } else if (Boolean(localStorage.getItem('dataAccount')) === false) {
-    //         navigate('/')
-    //     }
-
-    //     if (Boolean(localStorage.getItem('dataAccount')) === true) {
-    //         const expiresDate = new Date(JSON.parse(localStorage.getItem('dataAccount')).expiresDate)
-    //         const currentDate = new Date(convertDate(new Date()))
-    //         console.log(expiresDate)
-    //         if ((JSON.parse(localStorage.getItem('dataAccount')).id_user && currentDate < expiresDate)) {
-    //             console.log(store.getState().auth.user);
-    //             navigate('/dashboard');
-    //         } else {
-    //             navigate('/');
-    //         }
-    //     }
-    // // eslint-disable-next-line
-    // },[])
 
     useEffect(() => {
 
@@ -79,7 +23,6 @@ const Dashboard = () => {
         for (let i=1;i <= totalBoxContent;i++) {
             (paginationTemp.length < totalBoxContent ) && paginationTemp.push(i)
         }
-        // user !== null && console.log(user.payload);
         setPaginationNumber(paginationTemp);
     },
     // eslint-disable-next-line
@@ -218,44 +161,3 @@ const Dashboard = () => {
 }
 
 export default Dashboard;
-
-export const action = async ({ request }) => {
-    const data = await request.formData();
-    const email = data.get('password');
-    
-    // send to backend newsletter server ...
-    console.log(email)
-    return { message: 'Signup successful!' };
-}
-
-// const loadDashboard = async () => {
-//     const postData = {
-//         'apiUrl': 'http://localhost:5000/me',
-//         'method': 'get',
-//     }
-//     const response = await handlePostRequest(postData);
-//     console.log(response);
-
-//     if (!response.ok) {
-//         // return { isError: true, message: 'Could not fetch events.' };
-//         // throw new Response(JSON.stringify({ message: 'Could not fetch events.' }), {
-//         //   status: 500,
-//         // });
-//         throw json(
-//         { message: 'Could not fetch Dashboard.' },
-//         {
-//             status: 500,
-//         }
-//         );
-//     } else {
-//         const resData = await response.data;
-//         console.log(resData);
-//         return resData;
-//     }
-// }
-
-// export const loader = () => {
-//     return defer({
-//         events: loadDashboard(),
-//     });
-// }
