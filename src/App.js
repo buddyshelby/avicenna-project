@@ -1,12 +1,11 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import './App.css';
-import Login, { Action as loginAction } from './views/Login/Login'
-import Signup from './views/Signup/Signup'
+import Login, { action as loginAction, loader as loginLoader } from './controller/controllerLogin'
+import AddUser, { action as addUserAction, loader as addUserLoader } from './controller/controllerAddUser'
+import Dashboard, { loader as dashboardLoader } from './controller/controllerDashboard'
 import ResetPassword from './views/ResetPassword/ResetPassword'
 import NewPassword from './views/ResetPassword/NewPassword/NewPassword'
-import Dashboard, { action as dashboardAction } from './views/Dashboard/Dashboard'
-// import Navbar from './components/navbar/Navbar'
-import RootLayout from './pages/RootPage'
+import RootLayout from './views/pages/RootPage'
 import ErrorPage from './views/Error/ErrorPage'
 
 function App() {
@@ -17,16 +16,18 @@ function App() {
       element: <RootLayout />,
       errorElement: <ErrorPage />,
       children: [
-        { index: true, element: <Login />, action: loginAction },
+        { index: true, element: <Login />, action: loginAction, loader: loginLoader },
         {
           path: 'login',
           element: <Login />,
           action: loginAction,
+          loader: loginLoader
         },
         {
-          path: 'signup',
-          element: <Signup />,
-          // action: loginAction,
+          path: 'addUser',
+          element: <AddUser />,
+          action: addUserAction,
+          loader: addUserLoader,
         },
         {
           path: 'reset_password',
@@ -41,7 +42,7 @@ function App() {
         {
           path: 'dashboard',
           element: <Dashboard />,
-          action: dashboardAction,
+          loader: dashboardLoader
         },
       ],
     },
