@@ -11,6 +11,7 @@ function App() {
   // eslint-disable-next-line
   const router = createBrowserRouter([
     {
+      basename: '/avicenna',
       path: '/',
       element: <RootLayout />,
       errorElement: <ErrorPage />,
