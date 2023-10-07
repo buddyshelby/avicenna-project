@@ -15,7 +15,7 @@ const Login = () => {
     // eslint-disable-next-line
     const [windowWidth, windowHeight] = useWindowSize()
     const [styles, setStyles] = useState({})
-    const [isMobile, setIsMobile] =  useState(false)
+    const [isMobile, setIsMobile] =  useState(null)
     const [showModal, setShowModal] = useState(false)
     const [isRemember, setIsRemember] = useState(false)
 
@@ -42,7 +42,7 @@ const Login = () => {
         }
     }, [windowWidth])
 
-    return (
+    return isMobile !== null && (
         <main id={styles['login--page']}>
             <SeparateFunction />
             {isMobile &&
