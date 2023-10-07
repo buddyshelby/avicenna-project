@@ -1,6 +1,5 @@
 import { store} from '../Function/store'
 import { getDataUser as loadDataUser } from '../model/modelDataUser'
-import { reset } from '../Function/authSlice'
 import { defer, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../views/Dashboard/Dashboard'
@@ -10,26 +9,26 @@ const Dashboard = () => {
 
 const navigate = useNavigate();
 const dispatch = useDispatch();
-const { isError, isSuccess, user } = useSelector(state => state.auth)
+const { isError, isSuccess, user, isLoading } = useSelector(state => state.auth)
 const { isLogin } = useSelector(state => state.storage)
 
 useEffect(() => {
 
-    if (user === null) {
-        navigate('/')
-    }
+    // if (user === null) {
+    //     navigate('/')
+    // }
 
 },[isError, isSuccess, user, isLogin, dispatch, navigate])
 
 
-return <Layout />
+return !isLoading &&  <Layout />
 
 }
 
 export default Dashboard
 
 const dashLoad = async () => { 
-    await store.dispatch(loadDataUser())
+    // await store.dispatch(loadDataUser())
 }
 
 export const loader = () => {

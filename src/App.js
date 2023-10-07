@@ -3,8 +3,7 @@ import './App.css';
 import Login, { action as loginAction, loader as loginLoader } from './controller/controllerLogin'
 import AddUser, { action as addUserAction, loader as addUserLoader } from './controller/controllerAddUser'
 import Dashboard, { loader as dashboardLoader } from './controller/controllerDashboard'
-import ResetPassword from './views/ResetPassword/ResetPassword'
-import NewPassword from './views/ResetPassword/NewPassword/NewPassword'
+import Password, { action as passwordAction, loader as passwordLoader } from './controller/controllerPassword'
 import RootLayout from './views/pages/RootPage'
 import ErrorPage from './views/Error/ErrorPage'
 
@@ -30,14 +29,10 @@ function App() {
           loader: addUserLoader,
         },
         {
-          path: 'reset_password',
-          element: <ResetPassword />,
-          // action: loginAction,
-        },
-        {
-          path: 'new_password',
-          element: <NewPassword />,
-          // action: loginAction,
+          path: 'password/:id',
+          element: <Password />,
+          action: passwordAction,
+          loader: passwordLoader,
         },
         {
           path: 'dashboard',

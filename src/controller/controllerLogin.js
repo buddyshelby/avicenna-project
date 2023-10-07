@@ -10,7 +10,7 @@ const ControllerLogin = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { isError, isSuccess, user } = useSelector(state => state.auth);
+    const { isError, isSuccess, user, isLoading } = useSelector(state => state.auth);
     const { isLogin } = useSelector(state => state.storage);
 
     useEffect(() => {
@@ -21,18 +21,15 @@ const ControllerLogin = () => {
 
     },[isLogin, isError, isSuccess, user, dispatch, navigate])
 
-    return <Layout />
+    return !isLoading && <Layout />
 }
 
 export default ControllerLogin
 
-const logLoad = async () => { 
+const logLoad = async () => {
 
-    await store.dispatch(getDataUser()).then(res => {
-        console.log(res);
-    }).catch(err => {
-        console.clear()
-    })
+    await store.dispatch(getDataUser())
+    // console.clear()
 
 }
 
@@ -47,8 +44,6 @@ export const action = async ({ request }) => {
     const data = await request.formData();
     const email = data.get('email');
     const password = data.get('password');
-
-    console.log(password,email);
     
     await store.dispatch(loginUser({email,password}))
 
