@@ -35,7 +35,7 @@ function App() {
           loader: passwordLoader,
         },
         {
-          path: 'dashboard',
+          path: 'avicenna.sheradiva.com/dashboard',
           element: <Dashboard />,
           loader: dashboardLoader
         },
