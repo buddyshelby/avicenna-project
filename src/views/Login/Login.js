@@ -5,7 +5,7 @@ import Navbar from '../components/navbar/Navbar'
 import imageStorage from '../../assets/Login/imageStorage'
 import ShadowBackground from '../components/background/ShadowBackground'
 import SeparateFunction, { ResponsiveComponent, useWindowSize } from '../../Function/SeparateFunction'
-import { useFetcher } from 'react-router-dom';
+import { useFetcher, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 
 const Login = () => {
@@ -19,10 +19,13 @@ const Login = () => {
     const [showModal, setShowModal] = useState(false)
     const [isRemember, setIsRemember] = useState(false)
 
+    const navigate = useNavigate()
+
     const loginFormJson = loginJson.form
     const handleSubmit = (e) => {
         e.preventDefault();
-        subButton.current.click()
+        navigate('/dashboard')
+        // subButton.current.click()
     }
 
     const closeModal = (e) => {
