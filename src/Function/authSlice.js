@@ -3,7 +3,7 @@ import { getDataUser } from '../model/modelDataUser'
 import { loginUser } from '../model/modelLogin'
 import { logOutUser } from '../model/modelLogout'
 import { addUser } from '../model/modelAddUser'
-import { changePassword } from '../model/modelPassword'
+import { changePassword, resetPassword } from '../model/modelPassword'
 
 const initialState = {
 	user: null,
@@ -69,7 +69,7 @@ export const authSlice = createSlice({
 			state.message = action.payload;
 		});
 		
-		// Get User Login
+		// Change Password
 
 		builder.addCase(changePassword.pending, state => {
 			state.isLoading = true;
@@ -80,6 +80,22 @@ export const authSlice = createSlice({
 			state.user = action.payload;
 		});
 		builder.addCase(changePassword.rejected, (state, action) => {
+			state.isLoading = false;
+			state.isError = true;
+			state.message = action.payload;
+		});
+
+		// Reset Password
+
+		builder.addCase(resetPassword.pending, state => {
+			state.isLoading = true;
+		});
+		builder.addCase(resetPassword.fulfilled, (state, action) => {
+			state.isLoading = false;
+			state.isSuccess = true;
+			state.user = action.payload;
+		});
+		builder.addCase(resetPassword.rejected, (state, action) => {
 			state.isLoading = false;
 			state.isError = true;
 			state.message = action.payload;

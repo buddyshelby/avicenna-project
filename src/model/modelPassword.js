@@ -14,3 +14,27 @@ export const changePassword = createAsyncThunk('user/changePassword', async (dat
 		return thunkAPI.rejectWithValue(message);
 	}
 })
+
+export const resetPassword = createAsyncThunk('user/resetPassword', async (data, thunkAPI) => {
+	try {
+		const response = await axios.post(`http://localhost:5000/users/verify`, {
+			email: data.email
+		});
+		return response.data;
+	} catch (error) {
+		const message = error.response.data.msg;
+		return thunkAPI.rejectWithValue(message);
+	}
+})
+
+export const resetedPassword = createAsyncThunk('user/resetPassword', async (data, thunkAPI) => {
+	try {
+		const response = await axios.post(`http://localhost:5000/users/resetPassword/`, {
+			uniq_id: data.uniq_id
+		});
+		return response.data;
+	} catch (error) {
+		const message = error.response.data.msg;
+		return thunkAPI.rejectWithValue(message);
+	}
+})

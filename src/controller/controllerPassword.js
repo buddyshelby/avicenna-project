@@ -1,8 +1,8 @@
-import { store} from '../Function/store'
+import { store } from '../Function/store'
 import { getDataUser as loadDataUser } from '../model/modelDataUser'
 import { defer, useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { changePassword } from '../model/modelPassword'
+import { changePassword, resetPassword, resetedPassword } from '../model/modelPassword'
 import LayoutNewPassword from '../views/ResetPassword/NewPassword/NewPassword'
 import LayoutResetPassword from '../views/ResetPassword/ResetPassword'
 import { useEffect } from 'react';
@@ -28,9 +28,13 @@ useEffect(() => {
         
     }
 
-    if (user === null && isError) {
+    if (user === null && isError && params === 'change') {
+        // navigate('/')
+    } else if (params.length === 500) {
+        dispatch(resetedPassword({uniq_id: params}))
         navigate('/')
     }
+
     
 // eslint-disable-next-line
 },[params, user, isError, isLoading])
@@ -67,6 +71,9 @@ export const action = async ({ request }) => {
             allData[name] = value
         }
         await store.dispatch(changePassword(allData))
+    } else {
+        const email = data.get('email')
+        await store.dispatch(resetPassword({email}))
     }
 
     return { message: 'Signup successful!' };

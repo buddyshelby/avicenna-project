@@ -39,6 +39,11 @@ function App() {
           element: <Dashboard />,
           loader: dashboardLoader
         },
+        {
+          path: '#/dashboard',
+          element: <Dashboard />,
+          loader: dashboardLoader
+        },
       ],
     },
   ]);
