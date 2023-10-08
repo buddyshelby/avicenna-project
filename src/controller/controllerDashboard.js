@@ -14,9 +14,9 @@ const { isLogin } = useSelector(state => state.storage)
 
 useEffect(() => {
 
-    // if (user === null) {
-    //     navigate('/')
-    // }
+    if (user === null) {
+        navigate('/')
+    }
 
 },[isError, isSuccess, user, isLogin, dispatch, navigate])
 
@@ -28,7 +28,7 @@ return !isLoading &&  <Layout />
 export default Dashboard
 
 const dashLoad = async () => { 
-    // await store.dispatch(loadDataUser())
+    await store.dispatch(loadDataUser())
 }
 
 export const loader = () => {

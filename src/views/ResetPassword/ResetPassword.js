@@ -62,7 +62,6 @@ const ResetPassword = () => {
 
         else if (type === 'PHONE') {
             if (string[0] !== undefined && string[1] !== undefined) {
-                console.log(string[0] + string[1]);
                 (string[0] + string[1] === '08') ? dispatch({type: 'validPhone', valid: true}) : dispatch({type: 'validPhone', valid: false})
             } else if (string[0] === undefined || string[1] === undefined) {
                 dispatch({type: 'validPhone', valid: 'INIT'})
@@ -95,7 +94,6 @@ const ResetPassword = () => {
             }
         })
 
-        // console.log(windowWidth < 600);
         if (windowWidth > 600) {
             setStyles(desktopStyles)
             setIsMobile(false)
@@ -117,7 +115,7 @@ const ResetPassword = () => {
                         </div>
                         {/* {String(ResponsiveComponent(1080, 80, 600, 40, windowWidth))} */}
                         <div className={styles['resetPassword--content--right']} style={responsive.mobile.form.outForm}>
-                            <fetcher.Form className={styles['resetPassword--form']} style={responsive.mobile.form.insideForm}>
+                            <fetcher.Form method='post' action='/password/reset' className={styles['resetPassword--form']} style={responsive.mobile.form.insideForm}>
                                 <div className={styles['resetPassword--form--header']}>
                                     <span style={responsive.mobile.form.header}>Reset Your Password</span>
                                 </div>
