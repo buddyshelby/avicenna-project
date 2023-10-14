@@ -1,37 +1,17 @@
 import styles from './dashboard.module.css'
 import DashNav from '../components/dashboard/DashNav';
 import dashJson from '../../model/JSON/dashboard.json'
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import dataStorage from '../../assets/account/getAccountAsset'
-import { useWindowSize, ResponsiveComponent} from '../../Function/SeparateFunction'
+import DashboardBox from './DashboardBox';
 
 const Dashboard = () => {
     const accountJson = dashJson.account
-    const boxContent = dashJson['box-content']
-    const totalBoxContent = Math.ceil(boxContent.length / 2)
     const [photoProfile, setPhotoProfile] = useState(null)
-    const [paginationNumber, setPaginationNumber] = useState([])
-    const [paginationActive, setPaginationActive] = useState(0)
-    const contentBoxSizeRef = useRef('')
-    const lastContentBoxRef = useRef('')
-    const paginationRef = useRef('')
-    const [width, height] = useWindowSize()
-
-    useEffect(() => {
-
-        let paginationTemp = []
-        for (let i=1;i <= totalBoxContent;i++) {
-            (paginationTemp.length < totalBoxContent ) && paginationTemp.push(i)
-        }
-        setPaginationNumber(paginationTemp);
-    },
-    // eslint-disable-next-line
-    [])
 
     useEffect(() => {
         dataStorage({username: accountJson.username})
         .then((module) => {
-            // console.log(module);
             setPhotoProfile(module)
         })
         .catch(() => {
@@ -40,22 +20,6 @@ const Dashboard = () => {
     },
     // eslint-disable-next-line
     [photoProfile])
-
-    const statusStyle = (status) => {
-        if (status.toUpperCase() === "MASUK") {
-            return {
-                color: `#6EE7B7`,
-                backgroundColor: `#065F46`,
-                fontSize: `${ResponsiveComponent(1080, 14, 600, 7, width)}px`
-            }
-        } else if (status.toUpperCase() === "ABSEN") {
-            return {
-                color: `#FCA5A5`,
-                backgroundColor: `#991B1B`,
-                fontSize: `${ResponsiveComponent(1080, 14, 600, 7, width)}px`
-            }
-        }
-    }
 
     return (
         <main id={styles['dashboard-page']}>
@@ -85,7 +49,8 @@ const Dashboard = () => {
                                 <div className={styles['dashboard--header-box']}>
                                     
                                 </div>
-                                <div className={styles['dashboard--box-content']}>
+                                <DashboardBox />
+                                {/* <div className={styles['dashboard--box-content']}>
                                     <div className={styles['dashboard--box-content--header']}>
                                         <div className={styles['dashboard--box-content--header--wrapper']}>
                                             <div style={{ fontSize: `${ResponsiveComponent(1080, 16, 600, 9, width)}px` }}>Nama</div>
@@ -96,11 +61,11 @@ const Dashboard = () => {
                                             <div style={{ fontSize: `${ResponsiveComponent(1080, 16, 600, 9, width)}px` }}>Aksi</div>
                                         </div>
                                     </div>
-                                    {}
                                     <div className={styles['dashboard--box-content--data']} ref={contentBoxSizeRef} style={{ height: (paginationRef.current && lastContentBoxRef.current && contentBoxSizeRef.current && (paginationRef.current.offsetTop > lastContentBoxRef.current.offsetTop + lastContentBoxRef.current.clientHeight)) && `calc(${(height - paginationRef.current.clientHeight) - contentBoxSizeRef.current.offsetTop}px - 5px)` }}>
                                         {// eslint-disable-next-line
                                         boxContent.map((data, index) => {
-                                            if (index < boxContent.length && index < totalBoxContent && index > paginationActive - 1) {
+                                            if ((index < boxContent.length && index < totalBoxContent) && index > paginationActive - 1) {
+                                                // console.log(paginationActive);
                                                 return (
                                                         <div className={styles['dashboard--box-content--data--wrapper']} key={index} ref={lastContentBoxRef}>
                                                             <div style={{ fontSize: `${ResponsiveComponent(1080, 14, 600, 7, width)}px` }}>
@@ -135,6 +100,7 @@ const Dashboard = () => {
                                             {paginationNumber.map((item, index) => {
                                                 
                                                 const paginationHandler = (number) => {
+                                                    console.log(number);
                                                     setPaginationActive(number)
                                                 }
 
@@ -150,7 +116,7 @@ const Dashboard = () => {
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
