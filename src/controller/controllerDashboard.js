@@ -9,19 +9,23 @@ const Dashboard = () => {
 
 const navigate = useNavigate();
 const dispatch = useDispatch();
-const { isError, isSuccess, user, isLoading } = useSelector(state => state.auth)
-const { isLogin } = useSelector(state => state.storage)
+const { isErrorGetDataUser, isSuccessGetDataUser, userGetDataUser, isLoadingGetDataUser } = useSelector(state => state.auth)
 
 useEffect(() => {
 
-    if (user === null) {
-        navigate('/')
+    try {
+        if (!isLoadingGetDataUser)
+        if (userGetDataUser === null) {
+            navigate('/')
+        }
+    } catch (error) {
+        
     }
 
-},[isError, isSuccess, user, isLogin, dispatch, navigate])
+},[isLoadingGetDataUser, isErrorGetDataUser, isSuccessGetDataUser, userGetDataUser, dispatch, navigate])
 
 
-return !isLoading &&  <Layout />
+return !isLoadingGetDataUser &&  <Layout />
 
 }
 

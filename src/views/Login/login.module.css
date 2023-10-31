@@ -1,10 +1,20 @@
 #login--page {
     width: 100%;
-    background-color: darkgray;
+    background: var(--loginBG) no-repeat center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+}
+
+.background-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(10px); /* Apply the blur effect to the background */
+    width: 100%;
+    height: 100%;
 }
 
 #login {
@@ -20,6 +30,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 1024px;
     /* padding: 8% 0 2% 0; */
 }
 /* #login::before {
@@ -72,9 +83,9 @@
 .login--header {
     font-size: 28px;
     color: #FFF;
-    margin-top: 12%;
     letter-spacing: 5px;
     font-family: Montserrat;
+    letter-spacing: 0.20000000298023224px;
 }
 
 .login--desc {
@@ -126,6 +137,7 @@
     font-family: 'Roboto';
     font-weight: 500;
     font-size: 22px;
+    margin: 0;
 }
 
 .login--content-form--input-email,
