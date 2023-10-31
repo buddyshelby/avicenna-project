@@ -1,6 +1,7 @@
 {
     "account": {
         "id": "acc1",
+        "PhotoProfile": "photoNav",
         "username": "ahmadstepe",
         "password": "ahmadstepe123",
         "name": "Ahmad Stepe",
@@ -17,34 +18,48 @@
         },
         "menu-list" : [
             {
-                "id": "nav1",
-                "label": "Data Presensi",
-                "link": "data_presensi",
-                "icon": "account_box"
+                "id": "dashboard",
+                "label": "Dashboard",
+                "link": "dashboard",
+                "icon": "dashboard"
             },
             {
-                "id": "nav2",
-                "label": "Pro Manage",
-                "link": "pro_manage",
-                "icon": "all_inbox"
+                "id": "product",
+                "label": "Product",
+                "link": "product",
+                "icon": "product"
             },
             {
-                "id": "nav3",
-                "label": "Pro Manage",
-                "link": "pro_manage",
-                "icon": "all_inbox"
+                "id": "user",
+                "label": "User",
+                "link": "addUser",
+                "icon": "user",
+                "children": [
+                    {
+                        "id": "user",
+                        "label": "User",
+                        "link": "addUser",
+                        "icon": "user"
+                    }
+                ]
             },
             {
-                "id": "nav4",
-                "label": "Pro Manage",
-                "link": "pro_manage",
-                "icon": "all_inbox"
+                "id": "income",
+                "label": "Income",
+                "link": "income",
+                "icon": "income"
             },
             {
-                "id": "nav5",
-                "label": "Pro Manage",
-                "link": "pro_manage",
-                "icon": "all_inbox"
+                "id": "promote",
+                "label": "Promote",
+                "link": "promote",
+                "icon": "promote"
+            },
+            {
+                "id": "help",
+                "label": "Help",
+                "link": "help",
+                "icon": "help"
             }
         ]
     },
