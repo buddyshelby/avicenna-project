@@ -32,13 +32,31 @@
             {
                 "id": "user",
                 "label": "User",
-                "link": "addUser",
+                "link": false,
                 "icon": "user",
                 "children": [
                     {
-                        "id": "user",
-                        "label": "User",
+                        "id": "monitorUser",
+                        "label": "Monitor User",
+                        "link": "monitorUser",
+                        "icon": "user"
+                    },
+                    {
+                        "id": "addUser",
+                        "label": "Add User",
                         "link": "addUser",
+                        "icon": "user"
+                    },
+                    {
+                        "id": "changeUser",
+                        "label": "Change Password",
+                        "link": "changeUser",
+                        "icon": "user"
+                    },
+                    {
+                        "id": "resetUser",
+                        "label": "Reset Password",
+                        "link": "resetUser",
                         "icon": "user"
                     }
                 ]
