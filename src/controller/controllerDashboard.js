@@ -1,4 +1,4 @@
-import { store} from '../Function/store'
+import { store } from '../Function/store'
 import { getDataUser as loadDataUser } from '../model/modelDataUser'
 import { defer, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';

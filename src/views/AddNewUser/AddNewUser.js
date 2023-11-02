@@ -269,6 +269,41 @@ const AddNewUser = ({ getAllUsers }) => {
     }
 
     return (
+        <div className={styles['add--user--section']}>
+            <h2>Users</h2>
+            <span>Add New User</span>
+            <div>
+                <fetcher.Form method='post' action='/addUser'>
+                    {inputList.map((data, index) => {
+                        return (
+                            <div key={index}>
+                                <InputElement
+                                name={data.name}
+                                type={data.type}
+                                value={data.value}
+                                input={data.input}
+                                onChange={(data.name === 'submit') ? {
+                                    cursor: state.enableRegister ? 'pointer' : 'no-drop',
+                                    filter: state.enableRegister ? 'grayscale(0)' : 'grayscale(1)',
+                                    pointerEvents: state.enableRegister ? 'auto' : 'none'
+                                } :
+                                validationChecker}
+                                />
+                                {!state.validEmail && (data.name.toLowerCase() === 'email') && <span style={{ color: '#FF0C3E' }}>Please use valid Email.</span>}
+                                {initialState['validCheckDB'] === 'false' && (data.name.toLowerCase() === 'email') && <span style={{ color: '#FF0C3E' }}>Email Already Used</span>}
+                                {!state.validUname && (data.name.toLowerCase() === 'username') && <span style={{ color: '#FF0C3E' }}>Username Already Used</span>}
+                                {!state.validPhone && (data.name.toLowerCase() === 'phone') && <span style={{ color: '#FF0C3E' }}>Please use valid Phone Number <br/>(Ex: 08xxxxxxxx).</span>}
+                                {!state.validPass && (data.name.toLowerCase() === 'password') && <span style={{ color: '#FF0C3E' }}>Please at least use 1 Number.<br/>Minimum's 15 character.</span>}
+                                {(!state.validConfirmPass || !state.validConfirmPass === 'INIT') && (data.name.toLowerCase() === 'confirm password') && <span style={{ color: '#FF0C3E' }}>Your current password doesn't matches.</span>}
+                            </div>
+                        )
+                    })}
+                </fetcher.Form>
+            </div>
+        </div>
+    )
+
+    return (
         <main id={styles['add-user--page']} style={{ visibility: refNavbar.current ? '' : 'hidden' }}>
             <section id={styles['add-user']}>
                 <div className={styles['add-user--container']}>

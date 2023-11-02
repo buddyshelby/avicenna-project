@@ -1,4 +1,5 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './App.css';
 import Login, { action as loginAction, loader as loginLoader } from './controller/controllerLogin'
 import AddUser, { action as addUserAction, loader as addUserLoader } from './controller/controllerAddUser'
@@ -50,7 +51,9 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <RouterProvider router={router}/>
+  );
 }
 
 export default App;
