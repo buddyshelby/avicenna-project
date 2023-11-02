@@ -17,18 +17,25 @@ const ControllerLogin = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { isErrorLoginUser, isSuccessLoginUser, userLoginUser, userGetDataUser, isLoadingLoginUser } = useSelector(state => state.auth);
+    const { isError, isSuccess, user, isLoading } = useSelector(state => state.auth);
+    const { isLogin } = useSelector(state => state.storage);
 
     useEffect(() => {
 
+<<<<<<< HEAD
+        if (user) {
+            navigate('/dashboard')
+        }
+=======
         if (isSuccessLoginUser || userGetDataUser || userLoginUser !== null)
         navigate('/dashboard')
         else if (isErrorLoginUser || userLoginUser === null )
         navigate('/')
+>>>>>>> parent of 18d0d8b8 (Rebuild Update 0.9.1)
 
-    },[isErrorLoginUser, isSuccessLoginUser, userLoginUser, dispatch, navigate])
+    },[isLogin, isError, isSuccess, user, dispatch, navigate])
 
-    return !isLoadingLoginUser && <Layout />
+    return !isLoading && <Layout />
 }
 
 export default ControllerLogin

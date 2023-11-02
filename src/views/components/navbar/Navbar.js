@@ -1,4 +1,10 @@
 import navbarJson from '../../../model/JSON/navbar.json'
+<<<<<<< HEAD
+import desktopStyles from './navbar.module.css'
+import mobileStyles from './mobile-navbar.module.css'
+import { ResponsiveComponent, useWindowSize } from '../../../Function/SeparateFunction'
+import { useEffect, useState } from 'react'
+=======
 import dashboardJson from '../../../model/JSON/dashboard.json'
 import './navbar.css'
 import mobileStyles from './mobile-navbar.module.css'
@@ -7,6 +13,7 @@ import { useEffect, useState } from 'react'
 import imageStorage from '../../../assets/Dashboard/iconNavbar/imageStorage'
 import { ImageLoading } from '../loading/Loading'
 import { Img } from 'react-image'
+>>>>>>> parent of 18d0d8b8 (Rebuild Update 0.9.1)
 
 const Navbar = () => {
 
@@ -14,6 +21,40 @@ const Navbar = () => {
     const [windowWidth, windowHeight] = useWindowSize()
     const [styles, setStyles] = useState({})
     const [isMobile, setIsMobile] = useState(false)
+<<<<<<< HEAD
+
+    useEffect(() => {
+        if (windowWidth > 600 ) {
+            setIsMobile(false)
+            setStyles(desktopStyles)
+        } else {
+            setIsMobile(true)
+            setStyles(mobileStyles)
+        }
+    }, [windowWidth])
+
+    return (
+        <>
+        <nav id={styles.navbar}>
+            <div className={styles['navbar--container']}>
+                <div className={styles['navbar--wrapper']}>
+                    <div className={styles['navbar--content-left']}>
+                        <div className={styles['navbar--school-name']}>
+                            <h4 style={{ fontSize: isMobile && `${ResponsiveComponent(600, 24, 280, 14, windowWidth)}px` }}>{navbarJson['school-name']}</h4>
+                        </div>
+                        <div className={styles['navbar--menus-list']}>
+                            <ul style={{ fontSize: isMobile && `${ResponsiveComponent(600, 14, 280, 11, windowWidth)}px` }}>
+                                {navbarJson['menu-items'].map((item, index) => (
+                                    <li key={index}>
+                                        <span>
+                                            {item.label}
+                                        </span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+=======
     
     const [navbarActive, setNavbarActive] = useState({})
     
@@ -69,9 +110,11 @@ const Navbar = () => {
                 </div>
                 <div className='navbar--section--bottom'>
                     
+>>>>>>> parent of 18d0d8b8 (Rebuild Update 0.9.1)
                 </div>
             </div>
-        </div>
+        </nav>
+        </>
     )
 
     return (

@@ -46,8 +46,7 @@ const Login = () => {
     }, [windowWidth])
 
     return isMobile !== null && (
-        <main id={styles['login--page']} style={{ '--loginBG': `url(${imageStorage.loginBG})` }}>
-            <div className={styles['background-blur']}></div>
+        <main id={styles['login--page']}>
             <SeparateFunction />
             {isMobile &&
             <ShadowBackground showModal={showModal}>

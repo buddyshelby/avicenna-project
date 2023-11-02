@@ -1,6 +1,7 @@
 #dashboard-page {
     width: 100%;
     height: auto;
+    /* background-color: darkgray; */
 }
 
 #dashboard {
@@ -10,87 +11,129 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    /* background-color: rgba(223, 223, 24, 0.5); */
 }
 
 .dashboard--container {
     width: 100%;
     height: auto;
+    /* background-color: rgba(223, 32, 24, 0.5); */
 }
 
 .dashboard--wrapper {
     width: 100%;
     height: auto;
     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    /* background-color: #E6E9E8; */
+}
+
+/* .dashboard--wrapper--left {
+    width: 15%;
+    height: auto;
+    background-color: #fff;
+} */
+
+.dashboard--wrapper--right {
+    width: calc(100% - 280px);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0 2% 0 0%;
+    /* background-color: rgba(88, 89, 24, 1); */
+}
+
+.dashboard--wrapper--right--wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(133, 89, 24, 1); */
+}
+
+.dashboard--profile-box {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    margin-top: 2%;
+    /* background-color: darkkhaki; */
+}
+
+.dashboard--profile-box--account {
+    width: 100%;
+    height: auto;
+    background-color: #FFF;
+    border-radius: 10px;
+    padding: .7% 0;
+}
+
+.dashboard--profile-box--account--wrapper {
+    width: 100%;
+    height: auto;
+    display: flex;
     flex-direction: row;
+}
+
+.dashboard--profile-box--account--left {
+    width: calc(100% - 45px);
+    height: auto;
+    /* margin-right: 10px; */
+    /* background-color: darkviolet; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: flex-end;
 }
-
-.dashboard--wrapper--left {
-    width: 17%;
-    /* background-color: blue; */
-}
-.dashboard--wrapper--right {
-    width: 83%;
-    padding: 0 0 0 10%;
-    /* background-color: red; */
-}
-
-.dashboard--greeting {
-    width: 100%;
-    padding: 41px 0;
-    color: #000;
-    font-family: Poppins;
-    font-size: 24px;
-    font-weight: 500;
-}
-
-.dashboard--monitor {
-    width: 100%;
-    height: 84px;
-    padding: 32px 0;
-    /* background-color: red; */
+.dashboard--profile-box--account--left > div {
+    margin-right: 2%;
     display: flex;
+    flex-direction: column;
 }
-
-.dashboard--monitor--total-user,
-.dashboard--monitor--total-role,
-.dashboard--monitor--total-active {
-    width: calc(100% / 3);
-    height: 100%;
+.dashboard--profile-box--account--left > div > span {
+    text-align: center;
 }
-
-.dashboard--monitor--wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+.dashboard--profile-box--account--left > div > span {
+    font-family: 'Roboto';
 }
-
-.dashboard--monitor--photo {
-    width: 84px;
-    height: 100%;
-    margin: 0 2% 0 0;
-}
-
-.dashboard--monitor--photo > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.dashboard--monitor--detail {
-    margin: 0 0 0 2%;
-}
-
-.dashboard--monitor--detail-name {
-    color: #ACACAC;
-    font-family: Poppins;
+.dashboard--profile-box--account--left > div > span:nth-child(1) {
     font-size: 14px;
-    font-weight: 400;
+    font-weight: 500;
+    font-style: normal;
+}
+.dashboard--profile-box--account--left > div > span:nth-child(2) {
+    font-size: 13px;
+    font-weight: 100;
+    font-style: italic;
 }
 
-.dashboard--monitor--detail-status {
-    color: #333;
-    font-family: Poppins;
-    font-size: 32px;
-    font-weight: 600;
+.dashboard--profile-box--account--right {
+    width: 45px;
+    height: 45px;
+    /* background-color: darkmagenta; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3%;
+}
+
+.dashboard--profile-box--account--right > img {
+    width: 100%;
+    height: auto;
+}
+
+.dashboard--header-box {
+    width: 100%;
+    height: 103px;
+    background-color: #FFF;
+    border-radius: 10px;
+    margin-top: 2%;
 }
