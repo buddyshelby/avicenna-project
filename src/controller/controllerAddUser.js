@@ -9,25 +9,26 @@ import { reset } from '../Function/authSlice';
 
 const ControllerAddUser = () => {
 
-    const { isLoading, isSuccessAddUser, isErrorAddUser, userGetAllDataUser } = useSelector(state => state.auth)
+    const { isLoading, isSuccess, user: users } = useSelector(state => state.auth)
     const navigate = useNavigate()
 
     useEffect(() => {
         if (!isLoading) {
-            if (isErrorAddUser || isSuccessAddUser || userGetAllDataUser === null) {
+            if (isSuccess.addUser === true || users === null) {
                 navigate('/')
             }
             
         }
-    }, [userGetAllDataUser, isLoading, isSuccessAddUser, isErrorAddUser, navigate])
+    }, [users, isLoading, isSuccess, navigate])
 
-    return userGetAllDataUser && <Layout getAllUsers={userGetAllDataUser} />
+    return (isSuccess.getAll) && <Layout getAllUsers={users.getAllUser} />
 }
 
 export default ControllerAddUser
 
 const addUserLoad = async () => {
 
+    store.dispatch(reset())
     await store.dispatch(getAllDataUser()).then(res => res).catch(err => err)
 
 }

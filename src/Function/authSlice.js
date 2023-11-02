@@ -10,32 +10,22 @@ export const authSlice = createSlice({
 	name: 'auth',
 	initialState,
 	reducers: {
-		resetLogout: state => initialState,
-		reset: state => ({
-			...initialState,
-			userLogOutUser: state.userLogOutUser,
-			userResetPassword: state.userResetPassword,
-			userChangePassword: state.userChangePassword,
-			userGetAllDataUser: state.userGetAllDataUser,
-			userGetDataUser: state.userGetDataUser,
-			userAddUser: state.userAddUser,
-			userLoginUser: state.userLoginUser,
-		}),
+		reset: state => initialState,
 	},
 	extraReducers: builder => {
 
 		// Login
 
 		builder.addCase(loginUser.pending, state => {
-			state.isLoading = true;
+			state.isLoadingLoginUser = true;
 		});
 		builder.addCase(loginUser.fulfilled, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingLoginUser = false;
 			state.isSuccessLoginUser = true;
 			state.userLoginUser = action.payload;
 		});
 		builder.addCase(loginUser.rejected, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingLoginUser = false;
 			state.isErrorLoginUser = true;
 			state.messageLoginUser = action.payload;
 		});
@@ -43,14 +33,14 @@ export const authSlice = createSlice({
 		// Add User
 
 		builder.addCase(addUser.pending, state => {
-			state.isLoading = true;
+			state.isLoadingAddUser = true;
 		});
 		builder.addCase(addUser.fulfilled, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingAddUser = false;
 			state.isSuccessAddUser = true;
 		});
 		builder.addCase(addUser.rejected, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingAddUser = false;
 			state.isErrorAddUser = true;
 			state.messageAddUser = action.payload;
 		});
@@ -58,15 +48,15 @@ export const authSlice = createSlice({
 		// Get Data User
 
 		builder.addCase(getDataUser.pending, state => {
-			state.isLoading = true;
+			state.isLoadingGetDataUser = true;
 		});
 		builder.addCase(getDataUser.fulfilled, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingGetDataUser = false;
 			state.isSuccessGetDataUser = true;
 			state.userGetDataUser = action.payload;
 		});
 		builder.addCase(getDataUser.rejected, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingGetDataUser = false;
 			state.isErrorGetDataUser = true;
 			state.messageGetDataUser = action.payload;
 		});
@@ -74,15 +64,15 @@ export const authSlice = createSlice({
 		// Get All Data User
 
 		builder.addCase(getAllDataUser.pending, state => {
-			state.isLoading = true;
+			state.isLoadingGetAllDataUser = true;
 		});
 		builder.addCase(getAllDataUser.fulfilled, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingGetAllDataUser = false;
 			state.isSuccessGetAllDataUser = true;
 			state.userGetAllDataUser = action.payload;
 		});
 		builder.addCase(getAllDataUser.rejected, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingGetAllDataUser = false;
 			state.isErrorGetAllDataUser = true;
 			state.messageGetAllDataUser = action.payload;
 		});
@@ -90,15 +80,15 @@ export const authSlice = createSlice({
 		// Change Password
 
 		builder.addCase(changePassword.pending, state => {
-			state.isLoading = true;
+			state.isLoadingChangePassword = true;
 		});
 		builder.addCase(changePassword.fulfilled, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingChangePassword = false;
 			state.isSuccessChangePassword = true;
 			state.userChangePassword = action.payload;
 		});
 		builder.addCase(changePassword.rejected, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingChangePassword = false;
 			state.isErrorChangePassword = true;
 			state.messageChangePassword = action.payload;
 		});
@@ -106,15 +96,15 @@ export const authSlice = createSlice({
 		// Reset Password
 
 		builder.addCase(resetPassword.pending, state => {
-			state.isLoading = true;
+			state.isLoadingResetPassword = true;
 		});
 		builder.addCase(resetPassword.fulfilled, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingResetPassword = false;
 			state.isSuccessResetPassword = true;
 			state.userResetPassword = action.payload;
 		});
 		builder.addCase(resetPassword.rejected, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingResetPassword = false;
 			state.isErrorResetPassword = true;
 			state.messageResetPassword = action.payload;
 		});
@@ -122,20 +112,20 @@ export const authSlice = createSlice({
 		// Logout
 
 		builder.addCase(logOutUser.pending, state => {
-			state.isLoading = true;
+			state.isLoadingLogOutUser = true;
 		});
 		builder.addCase(logOutUser.fulfilled, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingLogOutUser = false;
 			state.isSuccessLogOutUser = true;
 			state.userLogOutUser = action.payload;
 		});
 		builder.addCase(logOutUser.rejected, (state, action) => {
-			state.isLoading = false;
+			state.isLoadingLogOutUser = false;
 			state.isErrorLogOutUser = true;
 			state.messageLogOutUser = action.payload;
 		});
 	},
 });
 
-export const { reset, resetLogout } = authSlice.actions;
+export const { reset } = authSlice.actions;
 export default authSlice.reducer;

@@ -6,6 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../views/Login/Login'
 import { useEffect } from 'react';
 
+window.onerror = function (message, source, lineno, colno, error) {
+  // Handle XHR errors here without logging to the console
+  console.error("An XHR error occurred:", error);
+  // Optionally, return true to suppress default browser error handling
+  return true;
+};
+
 const ControllerLogin = () => {
 
     const dispatch = useDispatch()
@@ -16,10 +23,8 @@ const ControllerLogin = () => {
 
         if (isSuccessLoginUser || userGetDataUser || userLoginUser !== null)
         navigate('/dashboard')
-        // return ''
         else if (isErrorLoginUser || userLoginUser === null )
         navigate('/')
-        // return ''
 
     },[isErrorLoginUser, isSuccessLoginUser, userLoginUser, dispatch, navigate])
 
@@ -30,7 +35,7 @@ export default ControllerLogin
 
 const logLoad = async () => {
 
-    // await store.dispatch(getDataUser())
+    await store.dispatch(getDataUser())
     // console.clear()
 
 }
