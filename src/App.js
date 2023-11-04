@@ -5,6 +5,7 @@ import './App.css';
 import Login, { action as loginAction, loader as loginLoader } from './controller/controllerLogin'
 import AddUser, { action as addUserAction, loader as addUserLoader } from './controller/controllerAddUser'
 import Dashboard, { loader as dashboardLoader } from './controller/controllerDashboard'
+import Loading from './views/components/loading/Loading';
 import Password, { action as passwordAction, loader as passwordLoader } from './controller/controllerPassword'
 import RootLayout from './views/pages/RootPage'
 import ErrorPage from './views/Error/ErrorPage'
@@ -43,16 +44,18 @@ function App() {
           element: <Dashboard />,
           loader: dashboardLoader
         },
-        {
-          path: '#/dashboard',
-          element: <Dashboard />,
-          loader: dashboardLoader
-        },
+        // {
+        //   path: '#/dashboard',
+        //   element: <Dashboard />,
+        //   loader: dashboardLoader
+        // },
       ],
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <RouterProvider router={router}/>
+  );
 }
 
 export default App;
