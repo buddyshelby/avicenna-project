@@ -1,21 +1,12 @@
 import { useLocation } from "react-router-dom";
 
-const Index = () => {
-
-    return (
-        <div>
-            abc
-        </div>
-    )
-}
-
 const Dashboard = () => {
 
     const { pathname } = useLocation()
 
     return (
-        <div>
-            {pathname === '/dashboard' && <Index/>}
+        <div style={{ margin: '0 0 0 20px' }}>
+            
         </div>
     )
 }

@@ -16,6 +16,7 @@ const initialState = {
     validPass: 'INIT',
     currentPass: '',
     validConfirmPass: 'INIT',
+    validRole: 'INIT',
     enableRegister: false,
 }
 
@@ -41,6 +42,8 @@ const reducer = (state, action) => {
             return { ...state, validPass: action.valid, currentPass: action.currentPass }
         case 'validConfirmPass':
             return { ...state, validConfirmPass: action.valid }
+        case 'validRole':
+            return { ...state, validRole: action.valid }
         case 'enableRegister':
             return { ...state, enableRegister: action.valid }
         default:
@@ -136,7 +139,7 @@ const InputElement = ({ name, type, value, input, onChange }) => {
         <div className={`${componentStyles['input--element']} ${componentStyles['select']}`}>
             <label htmlFor={name.replace(' ', '_').toLowerCase()}>{ name }</label>
             <div>
-                <select id="dropdown" name={name.replace(' ', '_').toLowerCase()} title={name.replace(' ', '_').toLowerCase()}>
+                <select id="dropdown" onChange={(e) => {onChange(e, `${name.toUpperCase()}`)}} name={name.replace(' ', '_').toLowerCase()} title={name.replace(' ', '_').toLowerCase()}>
                     <option value={value}>{ value }</option>
                     {listRole.map((data, index) => {
                         return <option key={index} value={data.id}>{ data.name }</option>
@@ -172,13 +175,14 @@ const AddNewUser = ({ getAllUsers }) => {
         state.validPhone === true &&
         state.validEmail === true &&
         state.validPass === true &&
-        state.validConfirmPass === true
+        state.validConfirmPass === true &&
+        state.validRole === true
         ) {
             dispatch({type: 'enableRegister', valid: true})
         } else {
             dispatch({type: 'enableRegister', valid: false})
         }
-    },[state.validUname, state.validPhone, state.validEmail, state.validPass, state.validConfirmPass])
+    },[state.validUname, state.validPhone, state.validEmail, state.validPass, state.validConfirmPass, state.validRole])
 
     const validationChecker = (e, type) => {
         const string = String(e.target.value)
@@ -206,7 +210,6 @@ const AddNewUser = ({ getAllUsers }) => {
                 } else if (String(string) !== String(item.username)) {
                     trigger['triggered'] === false && dispatch({type: 'validUname', valid: true})
                 }
-                console.log(string === '', state.validUname);
                 if (string === '') {
                     dispatch({type: 'validUname', valid: 'INIT'})
                 }
@@ -222,24 +225,22 @@ const AddNewUser = ({ getAllUsers }) => {
 
         else if (type === 'EMAIL') {   
             
-            // getAllUsers.map(item => {
-            //     if (string.includes('@') && String(string) === String(item.email)) {
-            //         dispatch({type: 'validEmail', valid: 'not true'})
-            //         initialState['validCheckDB'] = 'false'
-            //     } else if (string.includes('@')) {
-            //         dispatch({type: 'validEmail', valid: true})
-            //     }
+            getAllUsers.map(item => {
+                if (string.includes('@') && String(string) === String(item.email)) {
+                    dispatch({type: 'validEmail', valid: 'not true'})
+                    initialState['validCheckDB'] = 'false'
+                } else if (string.includes('@')) {
+                    dispatch({type: 'validEmail', valid: true})
+                }
                 
-            //     if (String(string) !== String(item.email)) {
-            //         initialState['validCheckDB'] = ''
-            //     }
-            //         return 'ok'
+                if (String(string) !== String(item.email)) {
+                    initialState['validCheckDB'] = ''
+                }
+                    return 'ok'
                 
-            // })
+            })
 
-            if (string.includes('@')) {
-                dispatch({type: 'validEmail', valid: true})
-            } else if (string === '') {
+            if (string === '') {
                 dispatch({type: 'validEmail', valid: 'INIT'})
             } else if (!string.includes('@')) {
                 dispatch({type: 'validEmail', valid: false})
@@ -264,6 +265,14 @@ const AddNewUser = ({ getAllUsers }) => {
                 dispatch({type: 'validConfirmPass', valid: 'INIT'})
             } else if (string !== state.currentPass) {
                 dispatch({type: 'validConfirmPass', valid: false})
+            }
+        }
+
+        else if (type === 'ADD ROLE') {
+            if (string !== '-') {
+                dispatch({type: 'validRole', valid: true})
+            } else {
+                dispatch({type: 'validRole', valid: 'INIT'})
             }
         }
     }
@@ -295,60 +304,13 @@ const AddNewUser = ({ getAllUsers }) => {
                                 {!state.validPhone && (data.name.toLowerCase() === 'phone') && <span style={{ color: '#FF0C3E' }}>Please use valid Phone Number <br/>(Ex: 08xxxxxxxx).</span>}
                                 {!state.validPass && (data.name.toLowerCase() === 'password') && <span style={{ color: '#FF0C3E' }}>Please at least use 1 Number.<br/>Minimum's 15 character.</span>}
                                 {(!state.validConfirmPass || !state.validConfirmPass === 'INIT') && (data.name.toLowerCase() === 'confirm password') && <span style={{ color: '#FF0C3E' }}>Your current password doesn't matches.</span>}
+                                {(state.validRole === 'INIT' && (data.name.toLowerCase() === 'add role')) && <span style={{ color: '#FF0C3E' }}>Please Choose a Role</span>}
                             </div>
                         )
                     })}
                 </fetcher.Form>
             </div>
         </div>
-    )
-
-    return (
-        <main id={styles['add-user--page']} style={{ visibility: refNavbar.current ? '' : 'hidden' }}>
-            <section id={styles['add-user']}>
-                <div className={styles['add-user--container']}>
-                    <div className={styles['add-user--wrapper']}>
-                        <div className={styles['add-user--wrapper--left']} ref={refNavbar} style={{ minWidth: '204px' }}>
-                            {refNavbar.current && <DashNav active={2} refNavbar={refNavbar} />}
-                        </div>
-                        <div className={styles['add-user--wrapper--right']}>
-                            <div>
-                                <h2>Users</h2>
-                                <span>Add New User</span>
-                                <div>
-                                    <fetcher.Form method='post' action='/addUser'>
-                                        {inputList.map((data, index) => {
-                                            return (
-                                                <div key={index}>
-                                                    <InputElement
-                                                    name={data.name}
-                                                    type={data.type}
-                                                    value={data.value}
-                                                    input={data.input}
-                                                    onChange={(data.name === 'submit') ? {
-                                                        cursor: state.enableRegister ? 'pointer' : 'no-drop',
-                                                        filter: state.enableRegister ? 'grayscale(0)' : 'grayscale(1)',
-                                                        pointerEvents: state.enableRegister ? 'auto' : 'none'
-                                                    } :
-                                                    validationChecker}
-                                                    />
-                                                    {!state.validEmail && (data.name.toLowerCase() === 'email') && <span style={{ color: '#FF0C3E' }}>Please use valid Email.</span>}
-                                                    {initialState['validCheckDB'] === 'false' && (data.name.toLowerCase() === 'email') && <span style={{ color: '#FF0C3E' }}>Email Already Used</span>}
-                                                    {!state.validUname && (data.name.toLowerCase() === 'username') && <span style={{ color: '#FF0C3E' }}>Username Already Used</span>}
-                                                    {!state.validPhone && (data.name.toLowerCase() === 'phone') && <span style={{ color: '#FF0C3E' }}>Please use valid Phone Number <br/>(Ex: 08xxxxxxxx).</span>}
-                                                    {!state.validPass && (data.name.toLowerCase() === 'password') && <span style={{ color: '#FF0C3E' }}>Please at least use 1 Number.<br/>Minimum's 15 character.</span>}
-                                                    {(!state.validConfirmPass || !state.validConfirmPass === 'INIT') && (data.name.toLowerCase() === 'confirm password') && <span style={{ color: '#FF0C3E' }}>Your current password doesn't matches.</span>}
-                                                </div>
-                                            )
-                                        })}
-                                    </fetcher.Form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
     )
 }
 

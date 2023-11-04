@@ -1,6 +1,7 @@
 import navbarJson from '../../../model/JSON/navbar.json'
 import dashboardJson from '../../../model/JSON/dashboard.json'
 import './navbar.css'
+import './mobile-navbar.css'
 import { logOutUser } from '../../../model/modelLogout'
 import { ResponsiveComponent, useWindowSize } from '../../../Function/SeparateFunction'
 import { useEffect, useState, Fragment } from 'react'
@@ -36,19 +37,33 @@ const Navbar = () => {
 
     const [navbarActiveClick, setNavbarActiveClick] = useState('')
 
-    const logOutHandler = (e) => {
+    const logOutHandler = async (e) => {
 
-        dispatch(logOutUser()).then(res => {
-            dispatch(resetLogout())
-            return navigate('/')
-        }).catch(err => {
-            return err
-        })
+        // dispatch(logOutUser()).then(res => {
+        //     dispatch(resetLogout())
+        //     return navigate('/')
+        // }).catch(err => {
+        //     return err
+        // })
+
+        await dispatch(logOutUser())
+        dispatch(resetLogout())
+        return navigate('/')
         
     }
 
+    const styleMenuChild = {
+        display: 'none',
+    }
+    const styleMenuChildClicked = {
+        display: 'block',
+    }
+
     useEffect(() => {
-        setNavbarActiveClick(pathname.split('/').slice(-1)[0]);
+        if(pathname === '/')
+            setNavbarActiveClick('dashboard');
+        else
+            setNavbarActiveClick(pathname.split('/').slice(-1)[0]);
     },[])
 
     return (
@@ -66,7 +81,7 @@ const Navbar = () => {
                     <MenuList  navbarActiveClick={navbarActiveClick} setNavbarActiveClick={setNavbarActiveClick} lists={dashboardJson['dash-nav']['menu-list']} menuChild={false}>
                         {dashboardJson['dash-nav']['menu-list'].map(item => {
                             return item.children && (
-                                <div key={item.id} style={{ display: (navbarActiveClick === item.id || item.children.filter(itemed => itemed.id === navbarActiveClick)[0]) ? 'block' : 'none' }}>
+                                <div key={item.id} style={(navbarActiveClick === item.id || item.children.filter(itemed => itemed.id === navbarActiveClick)[0]) ? styleMenuChildClicked : styleMenuChild}>
                                     <MenuList navbarActiveClick={navbarActiveClick} setNavbarActiveClick={setNavbarActiveClick} lists={item.children} menuChild={item.children? true : false} />
                                 </div>
                             )
@@ -88,6 +103,9 @@ const Navbar = () => {
                         </div>
                     </div>
                     <div onClick={logOutHandler} className='navbar--logout'>Log Out</div>
+                    <span onClick={logOutHandler} className="material-icons navbar--logout--icon">
+                        logout
+                    </span>
                 </div>
             </div>
         </div>

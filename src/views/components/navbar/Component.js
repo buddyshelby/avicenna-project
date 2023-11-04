@@ -29,7 +29,7 @@ export const MenuListChild = ({ item, setNavbarActiveClick, navbarActiveClick, m
 
     }
     return (
-        <div className={`navbar--menu-list${menuChild ? '--child' : ''}`} key={item.id} onClick={() => navbarClickHandler(item.id)} onMouseEnter={navbarActiveHandler} onMouseLeave={navbarNonActiveHandler} style={{ background: navbarActiveClick === item.id && '#5932ea' }}>
+        <div className={`navbar--menu-list${menuChild ? '--child animate' : ''}`} key={item.id} onClick={() => navbarClickHandler(item.id)} onMouseEnter={navbarActiveHandler} onMouseLeave={navbarNonActiveHandler} style={{ background: navbarActiveClick === item.id && '#5932ea' }}>
             <Img
             src={imageStorage[item.icon]}
             loader={<ImageLoading size="24px, 24px"/>}

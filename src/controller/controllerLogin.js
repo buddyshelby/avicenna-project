@@ -5,6 +5,8 @@ import { defer, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../views/Login/Login'
 import { useEffect } from 'react';
+import { FailedDisplay } from '../views/Status/Gagal/Failed';
+import { reset, resetLogout } from '../Function/authSlice';
 
 const ControllerLogin = () => {
 
@@ -12,16 +14,15 @@ const ControllerLogin = () => {
     const navigate = useNavigate()
     const { isErrorLoginUser, isSuccessLoginUser, userLoginUser, userGetDataUser, isLoadingLoginUser } = useSelector(state => state.auth);
 
-    useEffect(() => {
-
+    if (!isLoadingLoginUser) {
         if (isSuccessLoginUser || userGetDataUser || userLoginUser !== null)
-        navigate('/dashboard')
-        // return ''
-        else if (isErrorLoginUser || userLoginUser === null )
-        navigate('/')
-        // return ''
+            navigate('/dashboard')
+        else if (isErrorLoginUser) {
+            return <FailedDisplay buttonValue="Back" link="/">Sorry, something went wrong. You couldn't connect</FailedDisplay>
+        }
+    }
 
-    },[isErrorLoginUser, isSuccessLoginUser, userLoginUser, dispatch, navigate])
+
 
     return !isLoadingLoginUser && <Layout />
 }
@@ -30,8 +31,7 @@ export default ControllerLogin
 
 const logLoad = async () => {
 
-    // await store.dispatch(getDataUser())
-    // console.clear()
+    await store.dispatch(getDataUser())
 
 }
 

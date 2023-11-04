@@ -50,13 +50,7 @@
                     {
                         "id": "changeUser",
                         "label": "Change Password",
-                        "link": "changeUser",
-                        "icon": "user"
-                    },
-                    {
-                        "id": "resetUser",
-                        "label": "Reset Password",
-                        "link": "resetUser",
+                        "link": "password/change",
                         "icon": "user"
                     }
                 ]
