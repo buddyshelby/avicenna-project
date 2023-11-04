@@ -1,7 +1,6 @@
 import './template.css'
 import './template-not-found.css'
 import { EngineIcon } from './EngineIcon'
-import { Fragment } from 'react'
 
 export const TemplateNotFound = () => {
     return (

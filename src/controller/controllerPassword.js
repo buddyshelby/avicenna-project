@@ -7,13 +7,12 @@ import LayoutNewPassword from '../views/ResetPassword/NewPassword/NewPassword'
 import LayoutResetPassword from '../views/ResetPassword/ResetPassword'
 import { FailedDisplay } from '../views/Status/Gagal/Failed'
 import { SuccessDisplay } from '../views/Status/Sukses/Success';
-import { reset, resetLogout } from '../Function/authSlice';
+import { reset } from '../Function/authSlice';
 
 const Password = () => {
 
 const navigate = useNavigate()
 const dispatch = useDispatch()
-const allState = useSelector(state => state.auth)
 const { isLoading, isSuccessResetedPassword, isErrorResetedPassword, isSuccessChangePassword, isErrorChangePassword, isSuccessResetPassword, isErrorResetPassword, userGetDataUser } = useSelector(state => state.auth)
 const { id:paramsId } = useParams()
 const params = paramsId.toLowerCase()
@@ -55,7 +54,6 @@ if (!isLoading) {
 export default Password
 
 const passLoad = async ({ params }) => {
-    const allState = store.getState(state => state.auth).auth
     const {isLoading} = store.getState(state => state.auth).auth
     if (!isLoading)
     if (params.id.length === 500) {

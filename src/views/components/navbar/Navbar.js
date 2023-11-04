@@ -1,17 +1,16 @@
-import navbarJson from '../../../model/JSON/navbar.json'
 import dashboardJson from '../../../model/JSON/dashboard.json'
 import './navbar.css'
 import './mobile-navbar.css'
 import { logOutUser } from '../../../model/modelLogout'
-import { ResponsiveComponent, useWindowSize } from '../../../Function/SeparateFunction'
 import { useEffect, useState, Fragment } from 'react'
 import iconStorage from '../../../assets/Dashboard/iconNavbar/imageStorage'
 import imageStorage from '../../../assets/Dashboard/imageStorage'
 import { ImageLoading } from '../loading/Loading'
+// eslint-disable-next-line
 import { Img } from 'react-image'
 import { useDispatch } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { reset, resetLogout } from '../../../Function/authSlice'
+import { resetLogout } from '../../../Function/authSlice'
 import { MenuListChild } from './Component'
 
 const MenuList = ({ lists, children, setNavbarActiveClick, navbarActiveClick, menuChild }) => {
@@ -26,11 +25,6 @@ const MenuList = ({ lists, children, setNavbarActiveClick, navbarActiveClick, me
 }
 
 const Navbar = () => {
-
-    // eslint-disable-next-line
-    const [windowWidth, windowHeight] = useWindowSize()
-    const [styles, setStyles] = useState({})
-    const [isMobile, setIsMobile] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { pathname } = useLocation()
@@ -64,7 +58,7 @@ const Navbar = () => {
             setNavbarActiveClick('dashboard');
         else
             setNavbarActiveClick(pathname.split('/').slice(-1)[0]);
-    },[])
+    },[pathname])
 
     return (
         <div id='navbar'>

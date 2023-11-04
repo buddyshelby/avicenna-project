@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import imageStorage from '../../../assets/Dashboard/iconNavbar/imageStorage'
 import { ImageLoading } from '../loading/Loading'
+// eslint-disable-next-line
 import { Img } from 'react-image'
 import { useNavigate } from 'react-router-dom'
 

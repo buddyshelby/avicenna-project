@@ -2,29 +2,36 @@ import { store } from '../Function/store'
 import { loginUser } from '../model/modelLogin'
 import { getDataUser } from '../model/modelDataUser'
 import { defer, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Layout from '../views/Login/Login'
 import { useEffect } from 'react';
 import { FailedDisplay } from '../views/Status/Gagal/Failed';
-import { reset, resetLogout } from '../Function/authSlice';
 
 const ControllerLogin = () => {
 
-    const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { isErrorLoginUser, isSuccessLoginUser, userLoginUser, userGetDataUser, isLoadingLoginUser } = useSelector(state => state.auth);
+    const { isErrorLoginUser, isSuccessLoginUser, userLoginUser, userGetDataUser, isLoading } = useSelector(state => state.auth);
 
-    if (!isLoadingLoginUser) {
-        if (isSuccessLoginUser || userGetDataUser || userLoginUser !== null)
-            navigate('/dashboard')
-        else if (isErrorLoginUser) {
+    useEffect(() => {
+
+        try {
+            if (!isLoading)
+                if (isSuccessLoginUser || userGetDataUser || userLoginUser)
+                navigate('/dashboard')
+        } catch (error) {
+            
+        }
+
+    },[isSuccessLoginUser, userGetDataUser, userLoginUser, navigate, isLoading])
+
+    if (!isLoading) {
+        if (isErrorLoginUser) {
             return <FailedDisplay buttonValue="Back" link="/">Sorry, something went wrong. You couldn't connect</FailedDisplay>
         }
+        else
+        return <Layout />
     }
 
-
-
-    return !isLoadingLoginUser && <Layout />
 }
 
 export default ControllerLogin

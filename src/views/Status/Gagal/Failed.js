@@ -1,7 +1,7 @@
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { TemplateFailed, TemplateNotFound } from "./Template"
-import { reset, resetCustom, resetLogout } from "../../../Function/authSlice"
+import { reset, resetLogout } from "../../../Function/authSlice"
 import './template.css'
 
 export const MaintenanceDisplay = ({ children, buttonValue, link, reset: resetAll }) => {

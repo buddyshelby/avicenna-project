@@ -4,28 +4,27 @@ import { defer, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../views/Dashboard/Dashboard'
 import { useEffect } from 'react';
-import { FailedDisplay } from '../views/Status/Gagal/Failed';
 
 const Dashboard = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const { isErrorGetDataUser, isSuccessGetDataUser, userGetDataUser, isLoadingGetDataUser, userLoginUser } = useSelector(state => state.auth)
+    const { isErrorGetDataUser, isSuccessGetDataUser, userGetDataUser, isLoading, userLoginUser } = useSelector(state => state.auth)
     
     useEffect(() => {
 
         try {
-            if (!isLoadingGetDataUser)
-            if (isErrorGetDataUser || !userGetDataUser && !userLoginUser) {
+            if (!isLoading)
+            if (isErrorGetDataUser || (!userGetDataUser && !userLoginUser)) {
                 navigate('/')
             }
         } catch (error) {
             
         }
 
-    },[isLoadingGetDataUser, isErrorGetDataUser, userLoginUser, isSuccessGetDataUser, userGetDataUser, dispatch, navigate])
+    },[isLoading, isErrorGetDataUser, userLoginUser, isSuccessGetDataUser, userGetDataUser, dispatch, navigate])
 
-    return !isLoadingGetDataUser &&  <Layout />
+    return !isLoading &&  <Layout />
 
 }
 

@@ -1,16 +1,11 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import { Route } from 'react-router-dom';
 import { MaintenanceDisplay } from './views/Status/Gagal/Failed';
 import './App.css';
 import Login, { action as loginAction, loader as loginLoader } from './controller/controllerLogin'
 import AddUser, { action as addUserAction, loader as addUserLoader } from './controller/controllerAddUser'
 import Dashboard, { loader as dashboardLoader } from './controller/controllerDashboard'
-import Loading from './views/components/loading/Loading';
 import Password, { action as passwordAction, loader as passwordLoader } from './controller/controllerPassword'
 import RootLayout from './views/pages/RootPage'
-import ErrorPage from './views/Error/ErrorPage'
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
 function App() {
   // eslint-disable-next-line

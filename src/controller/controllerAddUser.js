@@ -5,7 +5,7 @@ import { defer, useNavigate } from 'react-router-dom';
 import Layout from '../views/AddNewUser/AddNewUser'
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { reset, resetLogout } from '../Function/authSlice';
+import { reset } from '../Function/authSlice';
 import { SuccessDisplay } from '../views/Status/Sukses/Success';
 import { FailedDisplay } from '../views/Status/Gagal/Failed';
 
