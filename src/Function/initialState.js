@@ -1,9 +1,5 @@
 export const initialState = {
-	user: null,
-	isError: false,
-	isSuccess: false,
 	isLoading: false,
-	message: '',
 
 	userLoginUser: null,
 	isErrorLoginUser: false,
@@ -41,9 +37,14 @@ export const initialState = {
 	isLoadingResetPassword: false,
 	messageResetPassword: '',
 
+	userResetedPassword: null,
+	isErrorResetedPassword: false,
+	isSuccessResetedPassword: false,
+	messageResetedPassword: '',
+
 	userLogOutUser: null,
 	isErrorLogOutUser: false,
 	isSuccessLogOutUser: false,
 	isLoadingLogOutUser: false,
 	messageLogOutUser: '',
-};
+}

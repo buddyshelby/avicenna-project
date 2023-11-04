@@ -1,27 +1,31 @@
-import { store} from '../Function/store'
+import { store } from '../Function/store'
 import { getDataUser as loadDataUser } from '../model/modelDataUser'
 import { defer, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../views/Dashboard/Dashboard'
 import { useEffect } from 'react';
+import { FailedDisplay } from '../views/Status/Gagal/Failed';
 
 const Dashboard = () => {
 
-const navigate = useNavigate();
-const dispatch = useDispatch();
-const { isError, isSuccess, user, isLoading } = useSelector(state => state.auth)
-const { isLogin } = useSelector(state => state.storage)
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { isErrorGetDataUser, isSuccessGetDataUser, userGetDataUser, isLoadingGetDataUser, userLoginUser } = useSelector(state => state.auth)
+    
+    useEffect(() => {
 
-useEffect(() => {
+        try {
+            if (!isLoadingGetDataUser)
+            if (isErrorGetDataUser || !userGetDataUser && !userLoginUser) {
+                navigate('/')
+            }
+        } catch (error) {
+            
+        }
 
-    if (user === null) {
-        navigate('/')
-    }
+    },[isLoadingGetDataUser, isErrorGetDataUser, userLoginUser, isSuccessGetDataUser, userGetDataUser, dispatch, navigate])
 
-},[isError, isSuccess, user, isLogin, dispatch, navigate])
-
-
-return !isLoading &&  <Layout />
+    return !isLoadingGetDataUser &&  <Layout />
 
 }
 

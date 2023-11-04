@@ -1,28 +1,32 @@
-import { Outlet, useLocation } from 'react-router-dom';
+import { store } from '../../Function/store'
+import { defer, Outlet, useLocation } from 'react-router-dom';
+import { getDataUser as loadDataUser } from '../../model/modelDataUser'
 import Loading from '../components/loading/Loading';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Navbar from '../components/navbar/Navbar';
 import './root-page.css'
+import './mobile--root-page.css'
 
 const RootLayout = (props) => {
 
-  const { isLoadingLoginUser } = useSelector(state => state.auth)
-  const { pathname } = useLocation()
+  const { isLoading, userGetDataUser, userGetAllDataUser } = useSelector(state => state.auth)
 
   return (
     <>
-    <div id='layout'>
+    {(userGetDataUser || userGetAllDataUser) ? <div id='layout'>
       <div className='wrapper'>
         <div className='left--layout'>
           <Navbar />
         </div>
         <div className='right--layout'>
-          aaa
+          {isLoading ? <Loading/> : <Outlet />}
         </div>
       </div>
-    </div>
-    {/* {isLoadingLoginUser ? <Loading /> : <Outlet />} */}
+    </div> :
+      <>
+        {isLoading ? <Loading/> : <Outlet/>}
+      </>}
     </>
   );
 }

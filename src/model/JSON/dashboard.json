@@ -1,6 +1,7 @@
 {
     "account": {
         "id": "acc1",
+        "PhotoProfile": "photoNav",
         "username": "ahmadstepe",
         "password": "ahmadstepe123",
         "name": "Ahmad Stepe",
@@ -17,49 +18,60 @@
         },
         "menu-list" : [
             {
-                "id": "nav1",
-                "label": "Data Presensi",
-                "link": "data_presensi",
-                "icon": "account_box"
+                "id": "dashboard",
+                "label": "Dashboard",
+                "link": "dashboard",
+                "icon": "dashboard"
             },
             {
-                "id": "nav2",
-                "label": "Pro Manage",
-                "link": "pro_manage",
-                "icon": "all_inbox"
+                "id": "product",
+                "label": "Product",
+                "link": "product",
+                "icon": "product"
             },
             {
-<<<<<<< HEAD
-                "id": "nav3",
-                "label": "Pro Manage",
-                "link": "pro_manage",
-                "icon": "all_inbox"
-=======
                 "id": "user",
                 "label": "User",
-                "link": "addUser",
+                "link": false,
                 "icon": "user",
                 "children": [
                     {
-                        "id": "user",
-                        "label": "User",
+                        "id": "monitorUser",
+                        "label": "Monitor User",
+                        "link": "monitorUser",
+                        "icon": "user"
+                    },
+                    {
+                        "id": "addUser",
+                        "label": "Add User",
                         "link": "addUser",
+                        "icon": "user"
+                    },
+                    {
+                        "id": "changeUser",
+                        "label": "Change Password",
+                        "link": "password/change",
                         "icon": "user"
                     }
                 ]
->>>>>>> parent of 18d0d8b8 (Rebuild Update 0.9.1)
             },
             {
-                "id": "nav4",
-                "label": "Pro Manage",
-                "link": "pro_manage",
-                "icon": "all_inbox"
+                "id": "income",
+                "label": "Income",
+                "link": "income",
+                "icon": "income"
             },
             {
-                "id": "nav5",
-                "label": "Pro Manage",
-                "link": "pro_manage",
-                "icon": "all_inbox"
+                "id": "promote",
+                "label": "Promote",
+                "link": "promote",
+                "icon": "promote"
+            },
+            {
+                "id": "help",
+                "label": "Help",
+                "link": "help",
+                "icon": "help"
             }
         ]
     },

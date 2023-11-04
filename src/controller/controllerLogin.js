@@ -5,37 +5,26 @@ import { defer, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Layout from '../views/Login/Login'
 import { useEffect } from 'react';
-
-window.onerror = function (message, source, lineno, colno, error) {
-  // Handle XHR errors here without logging to the console
-  console.error("An XHR error occurred:", error);
-  // Optionally, return true to suppress default browser error handling
-  return true;
-};
+import { FailedDisplay } from '../views/Status/Gagal/Failed';
+import { reset, resetLogout } from '../Function/authSlice';
 
 const ControllerLogin = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const { isError, isSuccess, user, isLoading } = useSelector(state => state.auth);
-    const { isLogin } = useSelector(state => state.storage);
+    const { isErrorLoginUser, isSuccessLoginUser, userLoginUser, userGetDataUser, isLoadingLoginUser } = useSelector(state => state.auth);
 
-    useEffect(() => {
-
-<<<<<<< HEAD
-        if (user) {
-            navigate('/dashboard')
-        }
-=======
+    if (!isLoadingLoginUser) {
         if (isSuccessLoginUser || userGetDataUser || userLoginUser !== null)
-        navigate('/dashboard')
-        else if (isErrorLoginUser || userLoginUser === null )
-        navigate('/')
->>>>>>> parent of 18d0d8b8 (Rebuild Update 0.9.1)
+            navigate('/dashboard')
+        else if (isErrorLoginUser) {
+            return <FailedDisplay buttonValue="Back" link="/">Sorry, something went wrong. You couldn't connect</FailedDisplay>
+        }
+    }
 
-    },[isLogin, isError, isSuccess, user, dispatch, navigate])
 
-    return !isLoading && <Layout />
+
+    return !isLoadingLoginUser && <Layout />
 }
 
 export default ControllerLogin
@@ -43,7 +32,6 @@ export default ControllerLogin
 const logLoad = async () => {
 
     await store.dispatch(getDataUser())
-    // console.clear()
 
 }
 
