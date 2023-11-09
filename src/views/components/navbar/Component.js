@@ -30,17 +30,17 @@ export const MenuListChild = ({ item, setNavbarActiveClick, navbarActiveClick, m
 
     }
     return (
-        <div className={`navbar--menu-list${menuChild ? '--child animate' : ''}`} key={item.id} onClick={() => navbarClickHandler(item.id)} onMouseEnter={navbarActiveHandler} onMouseLeave={navbarNonActiveHandler} style={{ background: navbarActiveClick === item.id && '#5932ea' }}>
+        <div className={`navbar--menu-list${menuChild ? '--child animate' : ''}`} key={item.id} onClick={() => navbarClickHandler(menuChild ? item.link : item.id)} onMouseEnter={navbarActiveHandler} onMouseLeave={navbarNonActiveHandler} style={{ background: navbarActiveClick === item.link && '#5932ea' }}>
             <Img
             src={imageStorage[item.icon]}
             loader={<ImageLoading size="24px, 24px"/>}
-            style={{ width: '24px', height: '24px', filter: (navbarActive[`nav${item.id}`] || navbarActiveClick === item.id) && 'brightness(100)' }}
+            style={{ width: '24px', height: '24px', filter: (navbarActive[`nav${item.id}`] || navbarActiveClick === item.link) && 'brightness(100)' }}
             />
-            <span style={{ filter: (navbarActive[`nav${item.id}`] || navbarActiveClick === item.id) && 'brightness(100)' }}>{ item.label }</span>
+            <span style={{ filter: (navbarActive[`nav${item.id}`] || navbarActiveClick === item.link) && 'brightness(100)' }}>{ item.label }</span>
             {item.children && <Img
             src={imageStorage['right-arrow']}
             loader={<ImageLoading size="4px, 8px"/>}
-            style={{ width: '4px', height: '8px', filter: (navbarActive[`nav${item.id}`] || navbarActiveClick === item.id) && 'brightness(100)' }}
+            style={{ width: '4px', height: '8px', filter: (navbarActive[`nav${item.id}`] || navbarActiveClick === item.link) && 'brightness(100)' }}
             />}
         </div>
     )

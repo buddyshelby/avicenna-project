@@ -3,6 +3,7 @@ import { MaintenanceDisplay } from './views/Status/Gagal/Failed';
 import './App.css';
 import Login, { action as loginAction, loader as loginLoader } from './controller/controllerLogin'
 import AddUser, { action as addUserAction, loader as addUserLoader } from './controller/controllerAddUser'
+import TableUser, { action as tableUserAction, loader as tableUserLoader } from './controller/controllerTableUser'
 import Dashboard, { loader as dashboardLoader } from './controller/controllerDashboard'
 import Password, { action as passwordAction, loader as passwordLoader } from './controller/controllerPassword'
 import RootLayout from './views/pages/RootPage'
@@ -27,6 +28,12 @@ function App() {
           element: <AddUser />,
           action: addUserAction,
           loader: addUserLoader,
+        },
+        {
+          path: 'tableUser',
+          element: <TableUser />,
+          action: tableUserAction,
+          loader: tableUserLoader,
         },
         {
           path: 'password/:id',

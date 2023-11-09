@@ -36,9 +36,9 @@
                 "icon": "user",
                 "children": [
                     {
-                        "id": "monitorUser",
-                        "label": "Monitor User",
-                        "link": "monitorUser",
+                        "id": "tableUser",
+                        "label": "Table User",
+                        "link": "tableUser",
                         "icon": "user"
                     },
                     {

@@ -2,7 +2,7 @@ import styles from './add-user.module.css'
 import componentStyles from './component-style.module.css'
 import { useRef, useEffect, useReducer } from 'react'
 import { useFetcher } from 'react-router-dom'
-import { useWindowSize } from '../../Function/SeparateFunction'
+import { useWindowSize } from '../../../Function/SeparateFunction'
 // name
 // type
 // value

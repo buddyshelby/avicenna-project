@@ -1,0 +1,57 @@
+.table-user--section {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.table-user--greeting {
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0 20px;
+}
+
+.table-user--monitor {
+    width: 100%;
+    margin-top: 72px;
+}
+
+.table-user--monitor--wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    position: relative;
+}
+
+/* ////////////////////////////TOTAL USER/////////////////////////////// */
+
+
+@media (max-width: 768px) {
+    .table-user--monitor--wrapper {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 400px) {
+
+    .table-user--section {
+        width: calc(100% - 70px);
+        padding: 0 0 0 70px;
+    }
+
+    .table-user--greeting {
+        margin-left: 0;
+    }
+
+    .table-user--monitor {
+        margin-top: 20px;
+    }
+    .table-user--monitor--wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* ////////////////////////////TOTAL USER MEDIA QUERY/////////////////////////////// */

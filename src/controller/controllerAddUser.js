@@ -2,7 +2,7 @@ import { store } from '../Function/store'
 import { addUser } from '../model/modelAddUser'
 import { getAllDataUser } from '../model/modelDataUser'
 import { defer, useNavigate } from 'react-router-dom';
-import Layout from '../views/AddNewUser/AddNewUser'
+import Layout from '../views/User/AddNewUser/AddNewUser'
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { reset } from '../Function/authSlice';

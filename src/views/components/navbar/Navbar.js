@@ -57,7 +57,7 @@ const Navbar = () => {
         if(pathname === '/')
             setNavbarActiveClick('dashboard');
         else
-            setNavbarActiveClick(pathname.split('/').slice(-1)[0]);
+            setNavbarActiveClick(pathname.split(/^\//).slice(-1)[0]);
     },[pathname])
 
     return (
@@ -69,13 +69,13 @@ const Navbar = () => {
                     loader={<ImageLoading size="37px, 37px"/>}
                     style={{ width: '37px', height: '37px' }}
                     />
-                    <span onClick={() => navigate('/addUser')}>Dashboard</span>
+                    <span>Dashboard</span>
                 </div>
                 <div className='navbar--section--middle'>
                     <MenuList  navbarActiveClick={navbarActiveClick} setNavbarActiveClick={setNavbarActiveClick} lists={dashboardJson['dash-nav']['menu-list']} menuChild={false}>
                         {dashboardJson['dash-nav']['menu-list'].map(item => {
                             return item.children && (
-                                <div key={item.id} style={(navbarActiveClick === item.id || item.children.filter(itemed => itemed.id === navbarActiveClick)[0]) ? styleMenuChildClicked : styleMenuChild}>
+                                <div key={item.id} style={(navbarActiveClick === item.id || item.children.filter(itemed => (itemed.link === navbarActiveClick))[0]) ? styleMenuChildClicked : styleMenuChild}>
                                     <MenuList navbarActiveClick={navbarActiveClick} setNavbarActiveClick={setNavbarActiveClick} lists={item.children} menuChild={item.children? true : false} />
                                 </div>
                             )

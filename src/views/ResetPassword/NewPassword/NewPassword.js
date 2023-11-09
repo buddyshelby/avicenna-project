@@ -139,7 +139,7 @@ const AddNewUser = ({ getAllUsers }) => {
     return (
         <div className={styles['add--user--section']}>
             <h2>Users</h2>
-            <span>Add New User</span>
+            <span>Change Password</span>
             <div>
                 <fetcher.Form method='post' action='/password/change'>
                     {inputList.map((data, index) => {
