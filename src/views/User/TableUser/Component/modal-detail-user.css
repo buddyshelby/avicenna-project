@@ -57,6 +57,7 @@
     line-height: normal;
     letter-spacing: -0.14px;
     overflow-y: scroll;
+    white-space: nowrap;
 }
 
 .table-user--modal-detail--title {

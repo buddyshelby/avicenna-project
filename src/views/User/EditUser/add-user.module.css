@@ -1,0 +1,128 @@
+.edit--user--section {
+    width: calc(100% - (71px * 2));
+    height: auto;
+    margin-left: 71px;
+    /* background-color: red; */
+}
+
+.edit--user--section > h2 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.edit--user--section > span {
+    color: #9197B3;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.14px;
+}
+
+.edit--user--section > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    fill: #FFF;
+    margin: 43px 0 84px 0;
+    background-color: white;
+    filter: drop-shadow(20px 0 30px rgba(0, 0, 0, 0.17));
+    padding: 37px 0;
+}
+
+.edit--user--section > div > form {
+    width: calc(100% - 100px);
+    align-self: center;
+}
+
+
+
+
+
+/* Mobile Display */
+@media (max-width: 768px) {
+.edit--user--section {
+    width: calc(100% - (25px * 2));
+    height: auto;
+    margin-left: 25px;
+    /* background-color: red; */
+}
+
+.edit--user--section > h2 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.edit--user--section > span {
+    color: #9197B3;
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.14px;
+}
+
+.edit--user--section > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    fill: #FFF;
+    margin: 43px 0 84px 0;
+    background-color: white;
+    filter: drop-shadow(20px 0 30px rgba(0, 0, 0, 0.17));
+    padding: 20px 0;
+}
+
+.edit--user--section > div > form {
+    width: calc(100% - 100px);
+    align-self: center;
+}
+}
+
+
+
+/* Esia Display */
+@media (max-width: 400px) {
+    .edit--user--section {
+        width: calc(100% - 20px);
+        height: auto;
+        margin: 0 10px 0 10px;
+        /* background-color: red; */
+    }
+    
+    .edit--user--section > h2 {
+        color: #000;
+        font-family: Poppins;
+        font-size: 24px;
+        font-weight: 500;
+        margin: 0;
+    }
+    
+    .edit--user--section > span {
+        color: #9197B3;
+        font-family: Poppins;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: -0.14px;
+    }
+    
+    .edit--user--section > div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        fill: #FFF;
+        margin: 43px 0 84px 0;
+        background-color: white;
+        filter: drop-shadow(20px 0 30px rgba(0, 0, 0, 0));
+        padding: 20px 0;
+    }
+    
+    .edit--user--section > div > form {
+        width: 100%;
+        align-self: center;
+    }
+    }

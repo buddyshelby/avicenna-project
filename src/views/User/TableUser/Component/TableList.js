@@ -97,7 +97,30 @@ export const TableList = () => {
                 </div>
             </div>
             <div className='table-user--bottom-table'>
-                
+                <div className='table-user--bottom-table--left'>
+                    <div className='table-user--bottom-table--text'>
+                        Showing data 1 to 8 of  256K entries
+                    </div>
+                </div>
+                <div className='table-user--bottom-table--right'>
+                    <div className='table-user--bottom-table--pagination'>
+                        <div className='table-user--bottom-table--pagination--left-arrow' tabIndex={0}>
+                            <span className="material-icons">
+                                chevron_left
+                            </span>
+                        </div>
+                        <div className='table-user--bottom-table--pagination--number-list'>
+                            <div tabIndex={1}>1</div>
+                            <div tabIndex={2}>2</div>
+                            <div tabIndex={3}>3</div>
+                        </div>
+                        <div className='table-user--bottom-table--pagination--right-arrow' tabIndex={4}>
+                            <span className="material-icons">
+                                chevron_right
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

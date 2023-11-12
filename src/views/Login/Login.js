@@ -1,7 +1,6 @@
 import desktopStyles from './login.module.css'
 import mobileStyles from './mobile-login.module.css'
 import loginJson from '../../model/JSON/login.json'
-import Navbar from '../components/navbar/Navbar'
 import imageStorage from '../../assets/Login/imageStorage'
 import ShadowBackground from '../components/background/ShadowBackground'
 import SeparateFunction, { ResponsiveComponent, useWindowSize } from '../../Function/SeparateFunction'
@@ -93,7 +92,6 @@ const Login = () => {
                     </fetcher.Form>
                 </div>
             </ShadowBackground>}
-            <Navbar />
             <section id={styles.login} style={{ '--loginBG': `url(${imageStorage.loginBG})` }}>
                 <div className={styles['login--container']}>
                     <div className={styles['login--wrapper']}>

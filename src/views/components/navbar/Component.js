@@ -5,7 +5,7 @@ import { ImageLoading } from '../loading/Loading'
 import { Img } from 'react-image'
 import { useNavigate } from 'react-router-dom'
 
-export const MenuListChild = ({ item, setNavbarActiveClick, navbarActiveClick, menuChild }) => {
+export const MenuListChild = ({ item, setNavbarActiveClick, navbarActiveClick, menuChild, navbarHide }) => {
 
     const [navbarActive, setNavbarActive] = useState({})
     const navigate = useNavigate()
@@ -30,7 +30,7 @@ export const MenuListChild = ({ item, setNavbarActiveClick, navbarActiveClick, m
 
     }
     return (
-        <div className={`navbar--menu-list${menuChild ? '--child animate' : ''}`} key={item.id} onClick={() => navbarClickHandler(menuChild ? item.link : item.id)} onMouseEnter={navbarActiveHandler} onMouseLeave={navbarNonActiveHandler} style={{ background: navbarActiveClick === item.link && '#5932ea' }}>
+        <div className={`navbar--menu-list${menuChild ? '--child animate' : ''} ${navbarHide}`} key={item.id} onClick={() => navbarClickHandler(menuChild ? item.link : item.id)} onMouseEnter={navbarActiveHandler} onMouseLeave={navbarNonActiveHandler} style={{ background: navbarActiveClick === item.link && '#5932ea' }}>
             <Img
             src={imageStorage[item.icon]}
             loader={<ImageLoading size="24px, 24px"/>}

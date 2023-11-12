@@ -11,6 +11,11 @@ export const initialState = {
 	isSuccessAddUser: false,
 	messageAddUser: '',
 
+	userEditUser: null,
+	isErrorEditUser: false,
+	isSuccessEditUser: false,
+	messageEditUser: '',
+
 	userGetDataUser: null,
 	isErrorGetDataUser: false,
 	isSuccessGetDataUser: false,

@@ -22,36 +22,36 @@ export const ModaDetailUser = ({ setModal, id_user }) => {
                 <div className='table-user--modal-detail--background' onClick={() => hidehandler()}></div>
                 <div className='table-user--modal-detail-wrapper'>
                     <div className='table-user--modal-detail--text'>
-                        <span className='table-user--modal-detail--title'>
+                        <div className='table-user--modal-detail--title'>
                             nama
-                        </span>
-                        <span className='table-user--modal-detail--desc'>
+                        </div>
+                        <div className='table-user--modal-detail--desc'>
                             {detailUser.fullname}
-                        </span>
-                        <span className='table-user--modal-detail--title'>
+                        </div>
+                        <div className='table-user--modal-detail--title'>
                             email
-                        </span>
-                        <span className='table-user--modal-detail--desc'>
+                        </div>
+                        <div className='table-user--modal-detail--desc'>
                             {detailUser.email}
-                        </span>
-                        <span className='table-user--modal-detail--title'>
+                        </div>
+                        <div className='table-user--modal-detail--title'>
                             address
-                        </span>
-                        <span className='table-user--modal-detail--desc'>
+                        </div>
+                        <div className='table-user--modal-detail--desc'>
                             {detailUser.alamat}
-                        </span>
-                        <span className='table-user--modal-detail--title'>
+                        </div>
+                        <div className='table-user--modal-detail--title'>
                             phone
-                        </span>
-                        <span className='table-user--modal-detail--desc'>
+                        </div>
+                        <div className='table-user--modal-detail--desc'>
                             081289522934
-                        </span>
-                        <span className='table-user--modal-detail--title'>
+                        </div>
+                        <div className='table-user--modal-detail--title'>
                             position
-                        </span>
-                        <span className='table-user--modal-detail--desc'>
+                        </div>
+                        <div className='table-user--modal-detail--desc'>
                             Pengusaha Batu Bara
-                        </span>
+                        </div>
                     </div>
                     <div className='table-user--modal-detail--action--wrapper'>
                         <div className='table-user--modal-detail--action'>

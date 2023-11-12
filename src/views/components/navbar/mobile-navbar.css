@@ -1,62 +1,63 @@
 @media (max-width: 768px) {
 
-#navbar {
+#navbar.hide{
     width: 60px;
     height: 100vh;
     position: fixed;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    transition: 2s;
+    transition: .4s;
+    z-index: 1;
 }
 
-.navbar--wrapper {
+.navbar--wrapper.hide{
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
-.navbar--section--top {
+.navbar--section--top.hide{
     width: auto;
     display: flex;
     align-items: center;
     padding-top: 37px;
 }
-.navbar--section--top > .navbar--dash-icon {
+.navbar--section--top > .navbar--dash-icon.hide{
     width: 50px;
     height: 50px;
     margin-right: 4px;
 }
-.navbar--section--top > span {
+.navbar--section--top.hide > span{
     display: none;
 }
 
-.navbar--section--middle {
-    width: 100%;
+.navbar--section--middle.hide{
+    width: 90%;
     height: 320px;
+    left: 5px;
     overflow-y: scroll;
     position: relative;
-    align-items: center;
     margin: 54px 0 0 0;
     border-radius: 8px;
-    /* padding: 10px 0; */
     transition: .2s;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.navbar--section--middle > div > .navbar--menu-list--child:hover,
-.navbar--section--middle > .navbar--menu-list:hover {
+.navbar--section--middle > div > .navbar--menu-list--child.hide:hover,
+.navbar--section--middle > .navbar--menu-list:hover.hide{
     background: #5932ea;
 }
-.navbar--section--middle > .navbar--menu-list {
-    width: fit-content;
+.navbar--section--middle > .navbar--menu-list.hide{
+    width: 100%;
     position: relative;
     display: flex;
+    justify-content: center;
     align-items: center;
     margin: 4px 0 0 0;
     cursor: pointer;
@@ -64,24 +65,26 @@
     padding: 10px 0;
     transition: .2s;
 }
-.navbar--section--middle > div > .navbar--menu-list--child > img:nth-child(1),
-.navbar--section--middle > .navbar--menu-list > img:nth-child(1) {
+.navbar--section--middle > div > .navbar--menu-list--child.hide > img{
+    margin: 0 4px !important;
+}
+.navbar--section--middle > .navbar--menu-list.hide > img{
+    margin: 0 !important;
+}
+.navbar--section--middle > div > .navbar--menu-list--child.hide > img:nth-child(1),
+.navbar--section--middle > .navbar--menu-list.hide > img:nth-child(1){
     margin: 0 8px 0 8px;
     transition: .2s;
 }
-.navbar--section--middle > div > .navbar--menu-list--child > span,
-.navbar--section--middle > .navbar--menu-list > span {
+.navbar--section--middle > div > .navbar--menu-list--child.hide > span,
+.navbar--section--middle > .navbar--menu-list.hide > span{
     display: none;
 }
-.navbar--section--middle > div > .navbar--menu-list--child > img:nth-child(3),
-.navbar--section--middle > .navbar--menu-list > img:nth-child(3) {
-    justify-self: flex-end;
-    position: absolute;
-    right: 0;
-    margin-right: 8px;
-    transition: .2s;
+.navbar--section--middle > div > .navbar--menu-list--child.hide > img:nth-child(3),
+.navbar--section--middle > .navbar--menu-list.hide > img:nth-child(3){
+    display: none;
 }
-.navbar--section--middle > div > .navbar--menu-list--child {
+.navbar--section--middle > div > .navbar--menu-list--child.hide{
     width: 100%;
     transform-origin: top bottom;
     position: relative;
@@ -94,7 +97,7 @@
     transition: .2s;
 }
 
-.navbar--section--bottom {
+.navbar--section--bottom.hide{
     width: 80%;
     position: absolute;
     bottom: 0;
@@ -104,18 +107,18 @@
     margin-bottom: 20px;
 }
 
-.navbar--profile {
+.navbar--profile.hide{
     width: 100%;
     display: flex;
     margin-bottom: 27px;
 }
-.navbar--profile-text {
+.navbar--profile-text.hide{
     margin-left: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.navbar--profile-text--header {
+.navbar--profile-text--header.hide{
     display: none;
     font-family: Poppins;
     font-size: 14px;
@@ -124,7 +127,7 @@
     letter-spacing: 0.01em;
     text-align: left;
 }
-.navbar--profile-text--desc {
+.navbar--profile-text--desc.hide{
     display: none;
     font-family: Poppins;
     font-size: 12px;
@@ -134,11 +137,11 @@
     text-align: left;
 }
 
-.navbar--section--bottom > .navbar--logout {
+.navbar--section--bottom > .navbar--logout.hide{
     display: none;
     
 }
-.navbar--section--bottom > .navbar--logout--icon {
+.navbar--section--bottom > .navbar--logout--icon.hide{
     cursor: pointer;
     display: block;
 }
