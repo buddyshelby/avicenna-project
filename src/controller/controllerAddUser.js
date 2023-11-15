@@ -2,10 +2,12 @@ import { store } from '../Function/store'
 import { addUser } from '../model/modelAddUser'
 import { getAllDataUser } from '../model/modelDataUser'
 import { defer, useNavigate } from 'react-router-dom';
-import Layout from '../views/AddNewUser/AddNewUser'
+import Layout from '../views/User/AddNewUser/AddNewUser'
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { reset } from '../Function/authSlice';
+import { SuccessDisplay } from '../views/Status/Sukses/Success';
+import { FailedDisplay } from '../views/Status/Gagal/Failed';
 
 const ControllerAddUser = () => {
 
@@ -14,12 +16,17 @@ const ControllerAddUser = () => {
 
     useEffect(() => {
         if (!isLoading) {
-            if (isErrorAddUser || isSuccessAddUser || userGetAllDataUser === null) {
+            if (userGetAllDataUser === null) {
                 navigate('/')
             }
             
         }
     }, [userGetAllDataUser, isLoading, isSuccessAddUser, isErrorAddUser, navigate])
+
+    if (isSuccessAddUser)
+        return <SuccessDisplay buttonValue="Back to Add Acoount" link="/addUser" reset={false}>Added Account Successfully</SuccessDisplay>
+    else if (isErrorAddUser)
+        return <FailedDisplay buttonValue="Back to Home" link="/">Failed to Added Account</FailedDisplay>
 
     return userGetAllDataUser && <Layout getAllUsers={userGetAllDataUser} />
 }
@@ -28,7 +35,7 @@ export default ControllerAddUser
 
 const addUserLoad = async () => {
 
-    await store.dispatch(getAllDataUser()).then(res => res).catch(err => err)
+    await store.dispatch(getAllDataUser())
 
 }
 
@@ -54,8 +61,6 @@ export const action = async ({ request }) => {
         no_hp: data.get('phone'),
         jabatan: data.get('jabatan'),
     }
-
-    console.log(postData);
 
     store.dispatch(reset())
 

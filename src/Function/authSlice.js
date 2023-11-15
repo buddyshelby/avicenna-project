@@ -3,7 +3,9 @@ import { getDataUser, getAllDataUser } from '../model/modelDataUser'
 import { loginUser } from '../model/modelLogin'
 import { logOutUser } from '../model/modelLogout'
 import { addUser } from '../model/modelAddUser'
-import { changePassword, resetPassword } from '../model/modelPassword'
+import { editUser } from '../model/modelEditUser'
+import { deleteUser } from '../model/modelDeleteUser'
+import { changePassword, resetPassword, resetedPassword } from '../model/modelPassword'
 import { initialState } from './initialState';
 
 export const authSlice = createSlice({
@@ -11,7 +13,11 @@ export const authSlice = createSlice({
 	initialState,
 	reducers: {
 		resetLogout: state => initialState,
-		reset: state => ({
+		resetCustom: (state, action) => ({
+			...state,
+			[action]: initialState[action]
+		}),
+		reset: (state) => ({
 			...initialState,
 			userLogOutUser: state.userLogOutUser,
 			userResetPassword: state.userResetPassword,
@@ -53,6 +59,36 @@ export const authSlice = createSlice({
 			state.isLoading = false;
 			state.isErrorAddUser = true;
 			state.messageAddUser = action.payload;
+		});
+
+		// Edit User
+
+		builder.addCase(editUser.pending, state => {
+			state.isLoading = true;
+		});
+		builder.addCase(editUser.fulfilled, (state, action) => {
+			state.isLoading = false;
+			state.isSuccessEditUser = true;
+		});
+		builder.addCase(editUser.rejected, (state, action) => {
+			state.isLoading = false;
+			state.isErrorEditUser = true;
+			state.messageEditUser = action.payload;
+		});
+
+		// Delete User
+
+		builder.addCase(deleteUser.pending, state => {
+			state.isLoading = true;
+		});
+		builder.addCase(deleteUser.fulfilled, (state, action) => {
+			state.isLoading = false;
+			state.isSuccessDeleteUser = true;
+		});
+		builder.addCase(deleteUser.rejected, (state, action) => {
+			state.isLoading = false;
+			state.isErrorDeleteUser = true;
+			state.messageDeleteUser = action.payload;
 		});
 
 		// Get Data User
@@ -119,6 +155,22 @@ export const authSlice = createSlice({
 			state.messageResetPassword = action.payload;
 		});
 
+		// Reseted Password
+
+		builder.addCase(resetedPassword.pending, state => {
+			state.isLoading = true;
+		});
+		builder.addCase(resetedPassword.fulfilled, (state, action) => {
+			state.isLoading = false;
+			state.isSuccessResetedPassword = true;
+			state.userResetedPassword = action.payload;
+		});
+		builder.addCase(resetedPassword.rejected, (state, action) => {
+			state.isLoading = false;
+			state.isErrorResetedPassword = true;
+			state.messageResetedPassword = action.payload;
+		});
+
 		// Logout
 
 		builder.addCase(logOutUser.pending, state => {
@@ -127,15 +179,13 @@ export const authSlice = createSlice({
 		builder.addCase(logOutUser.fulfilled, (state, action) => {
 			state.isLoading = false;
 			state.isSuccessLogOutUser = true;
-			state.userLogOutUser = action.payload;
 		});
 		builder.addCase(logOutUser.rejected, (state, action) => {
 			state.isLoading = false;
 			state.isErrorLogOutUser = true;
-			state.messageLogOutUser = action.payload;
 		});
 	},
 });
 
-export const { reset, resetLogout } = authSlice.actions;
+export const { reset, resetLogout, resetCustom } = authSlice.actions;
 export default authSlice.reducer;

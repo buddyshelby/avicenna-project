@@ -196,6 +196,7 @@
     font-size: 14px;
     font-weight: bold;
     font-style: italic;
+    cursor: pointer;
 }
 .login--content-form--sign-up {
     display: flex;

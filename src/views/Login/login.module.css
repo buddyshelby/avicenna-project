@@ -1,5 +1,6 @@
 #login--page {
     width: 100%;
+    top: 0;
     background: var(--loginBG) no-repeat center;
     display: flex;
     flex-direction: column;
@@ -194,6 +195,7 @@
     font-size: 14px;
     font-weight: bold;
     font-style: italic;
+    cursor: pointer;
 }
 .login--content-form--sign-up {
     display: flex;

@@ -1,9 +1,5 @@
 export const initialState = {
-	user: null,
-	isError: false,
-	isSuccess: false,
 	isLoading: false,
-	message: '',
 
 	userLoginUser: null,
 	isErrorLoginUser: false,
@@ -14,6 +10,16 @@ export const initialState = {
 	isErrorAddUser: false,
 	isSuccessAddUser: false,
 	messageAddUser: '',
+
+	userEditUser: null,
+	isErrorEditUser: false,
+	isSuccessEditUser: false,
+	messageEditUser: '',
+
+	userDeleteUser: null,
+	isErrorDeleteUser: false,
+	isSuccessDeleteUser: false,
+	messageDeleteUser: '',
 
 	userGetDataUser: null,
 	isErrorGetDataUser: false,
@@ -35,8 +41,13 @@ export const initialState = {
 	isSuccessResetPassword: false,
 	messageResetPassword: '',
 
+	userResetedPassword: null,
+	isErrorResetedPassword: false,
+	isSuccessResetedPassword: false,
+	messageResetedPassword: '',
+
 	userLogOutUser: null,
 	isErrorLogOutUser: false,
 	isSuccessLogOutUser: false,
 	messageLogOutUser: '',
-};
+}

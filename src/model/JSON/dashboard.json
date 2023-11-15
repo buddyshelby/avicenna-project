@@ -36,27 +36,15 @@
                 "icon": "user",
                 "children": [
                     {
-                        "id": "monitorUser",
-                        "label": "Monitor User",
-                        "link": "monitorUser",
-                        "icon": "user"
-                    },
-                    {
-                        "id": "addUser",
-                        "label": "Add User",
-                        "link": "addUser",
+                        "id": "tableUser",
+                        "label": "Table User",
+                        "link": "tableUser",
                         "icon": "user"
                     },
                     {
                         "id": "changeUser",
                         "label": "Change Password",
-                        "link": "changeUser",
-                        "icon": "user"
-                    },
-                    {
-                        "id": "resetUser",
-                        "label": "Reset Password",
-                        "link": "resetUser",
+                        "link": "password/change",
                         "icon": "user"
                     }
                 ]

@@ -1,21 +1,13 @@
-import { useLocation } from "react-router-dom";
-
-const Index = () => {
-
-    return (
-        <div>
-            abc
-        </div>
-    )
-}
+import './dashboard.css'
+import PieGraph from './Component/PieGraph/PieGraph'
+import TopSummary from './Component/TopSummary/TopSummary'
 
 const Dashboard = () => {
 
-    const { pathname } = useLocation()
-
     return (
-        <div>
-            {pathname === '/dashboard' && <Index/>}
+        <div id='dashboard' style={{ margin: '0 0 0 20px' }}>
+            <TopSummary />
+            <PieGraph />
         </div>
     )
 }

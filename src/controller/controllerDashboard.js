@@ -7,25 +7,24 @@ import { useEffect } from 'react';
 
 const Dashboard = () => {
 
-const navigate = useNavigate();
-const dispatch = useDispatch();
-const { isErrorGetDataUser, isSuccessGetDataUser, userGetDataUser, isLoadingGetDataUser } = useSelector(state => state.auth)
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { isErrorGetDataUser, isSuccessGetDataUser, userGetDataUser, isLoading, userLoginUser } = useSelector(state => state.auth)
+    
+    useEffect(() => {
 
-useEffect(() => {
-
-    try {
-        if (!isLoadingGetDataUser)
-        if (userGetDataUser === null) {
-            navigate('/')
+        try {
+            if (!isLoading)
+            if (isErrorGetDataUser || (!userGetDataUser && !userLoginUser)) {
+                navigate('/')
+            }
+        } catch (error) {
+            
         }
-    } catch (error) {
-        
-    }
 
-},[isLoadingGetDataUser, isErrorGetDataUser, isSuccessGetDataUser, userGetDataUser, dispatch, navigate])
+    },[isLoading, isErrorGetDataUser, userLoginUser, isSuccessGetDataUser, userGetDataUser, dispatch, navigate])
 
-
-return !isLoadingGetDataUser &&  <Layout />
+    return !isLoading &&  <Layout />
 
 }
 

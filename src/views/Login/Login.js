@@ -1,7 +1,6 @@
 import desktopStyles from './login.module.css'
 import mobileStyles from './mobile-login.module.css'
 import loginJson from '../../model/JSON/login.json'
-import Navbar from '../components/navbar/Navbar'
 import imageStorage from '../../assets/Login/imageStorage'
 import ShadowBackground from '../components/background/ShadowBackground'
 import SeparateFunction, { ResponsiveComponent, useWindowSize } from '../../Function/SeparateFunction'
@@ -65,7 +64,7 @@ const Login = () => {
                             <input type="password" name="password" placeholder={loginFormJson.input_2} autoComplete="current-password" style={{ fontSize: `${ResponsiveComponent(600, 14, 280, 7, windowWidth)}px` }} />
                         </div>
                         <div className={styles['login--content-form--forget--sign-up']}>
-                            <div className={styles['login--content-form--forget-password']}>
+                            <div className={styles['login--content-form--forget-password']} onClick={() => navigate('/password/reset')}>
                                 <span style={{ fontSize: `${ResponsiveComponent(600, 12, 280, 5, windowWidth)}px` }}>{loginFormJson.span_1}</span>
                             </div>
                             <div className={styles['login--content-form--sign-up']}>
@@ -93,7 +92,6 @@ const Login = () => {
                     </fetcher.Form>
                 </div>
             </ShadowBackground>}
-            <Navbar />
             <section id={styles.login} style={{ '--loginBG': `url(${imageStorage.loginBG})` }}>
                 <div className={styles['login--container']}>
                     <div className={styles['login--wrapper']}>
@@ -128,7 +126,7 @@ const Login = () => {
                                     <input type="password" name="password" placeholder={loginFormJson.input_2} autoComplete="current-password" style={{ fontSize: !isMobile && `${ResponsiveComponent(1080, 14, 600, 7, windowWidth)}px` }} />
                                 </div>
                                 <div className={styles['login--content-form--forget--sign-up']}>
-                                    <div className={styles['login--content-form--forget-password']}>
+                                    <div className={styles['login--content-form--forget-password']}  onClick={() => navigate('/password/reset')}>
                                         <span style={{ fontSize: !isMobile && `${ResponsiveComponent(1080, 12, 600, 5, windowWidth)}px` }}>{loginFormJson.span_1}</span>
                                     </div>
                                     <div className={styles['login--content-form--sign-up']}>
