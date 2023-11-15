@@ -1,8 +1,13 @@
+import './dashboard.css'
+import PieGraph from './Component/PieGraph/PieGraph'
+import TopSummary from './Component/TopSummary/TopSummary'
+
 const Dashboard = () => {
 
     return (
-        <div style={{ margin: '0 0 0 20px' }}>
-            
+        <div id='dashboard' style={{ margin: '0 0 0 20px' }}>
+            <TopSummary />
+            <PieGraph />
         </div>
     )
 }

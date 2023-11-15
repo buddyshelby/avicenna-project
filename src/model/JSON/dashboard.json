@@ -42,12 +42,6 @@
                         "icon": "user"
                     },
                     {
-                        "id": "addUser",
-                        "label": "Add User",
-                        "link": "addUser",
-                        "icon": "user"
-                    },
-                    {
                         "id": "changeUser",
                         "label": "Change Password",
                         "link": "password/change",

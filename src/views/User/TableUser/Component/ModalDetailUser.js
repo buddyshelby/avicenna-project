@@ -1,11 +1,13 @@
 import { useState } from 'react'
 import './modal-detail-user.css'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 export const ModaDetailUser = ({ setModal, id_user }) => {
 
     const { userGetAllDataUser } = useSelector(state => state.auth)
     const [styleModal, setStyleModal] = useState({})
+    const navigate = useNavigate()
 
     const detailUser = userGetAllDataUser.filter(item => item.id_user === id_user)[0]
 
@@ -16,10 +18,18 @@ export const ModaDetailUser = ({ setModal, id_user }) => {
         }, 1000);
     }
 
+    const editHandler = () => {
+        navigate(`/editUser/${id_user}`)
+    }
+
+    const deleteHandler = () => {
+        navigate(`/deleteUser/${id_user}`)
+    }
+
     return (
         <>
             <div className='table-user--modal-detail' style={styleModal}>
-                <div className='table-user--modal-detail--background' onClick={() => hidehandler()}></div>
+                <div className='table-user--modal-detail--background' onClick={hidehandler}></div>
                 <div className='table-user--modal-detail-wrapper'>
                     <div className='table-user--modal-detail--text'>
                         <div className='table-user--modal-detail--title'>
@@ -54,10 +64,10 @@ export const ModaDetailUser = ({ setModal, id_user }) => {
                         </div>
                     </div>
                     <div className='table-user--modal-detail--action--wrapper'>
-                        <div className='table-user--modal-detail--action'>
+                        <div className='table-user--modal-detail--action' onClick={editHandler}>
                             Edit
                         </div>
-                        <div className='table-user--modal-detail--action'>
+                        <div className='table-user--modal-detail--action' onClick={deleteHandler}>
                             Delete
                         </div>
                     </div>

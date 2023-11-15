@@ -2,21 +2,7 @@ import './table-user.css'
 import { useWindowSize } from '../../../Function/SeparateFunction'
 import { CardTotal, TableList } from './Component/component'
 import { Fragment } from 'react'
-
-const listTheTotal = [
-    {
-        nama: "Total User",
-        total: "5,423"
-    },
-    {
-        nama: "Admin",
-        total: "1,893"
-    },
-    {
-        nama: "Active Now",
-        total: "189"
-    }
-]
+import { useEffect } from 'react'
 
 export const TableUser = ({ getAllUsers }) => {
 
@@ -25,7 +11,20 @@ export const TableUser = ({ getAllUsers }) => {
 
     // Begin of The Table Component
 
-
+    const listTheTotal = [
+        {
+            nama: "Total User",
+            total: getAllUsers.length
+        },
+        {
+            nama: "Admin",
+            total: "1,893"
+        },
+        {
+            nama: "Active Now",
+            total: "189"
+        }
+    ]
 
     // End of The Table Component
 

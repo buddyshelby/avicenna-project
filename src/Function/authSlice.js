@@ -3,6 +3,8 @@ import { getDataUser, getAllDataUser } from '../model/modelDataUser'
 import { loginUser } from '../model/modelLogin'
 import { logOutUser } from '../model/modelLogout'
 import { addUser } from '../model/modelAddUser'
+import { editUser } from '../model/modelEditUser'
+import { deleteUser } from '../model/modelDeleteUser'
 import { changePassword, resetPassword, resetedPassword } from '../model/modelPassword'
 import { initialState } from './initialState';
 
@@ -57,6 +59,36 @@ export const authSlice = createSlice({
 			state.isLoading = false;
 			state.isErrorAddUser = true;
 			state.messageAddUser = action.payload;
+		});
+
+		// Edit User
+
+		builder.addCase(editUser.pending, state => {
+			state.isLoading = true;
+		});
+		builder.addCase(editUser.fulfilled, (state, action) => {
+			state.isLoading = false;
+			state.isSuccessEditUser = true;
+		});
+		builder.addCase(editUser.rejected, (state, action) => {
+			state.isLoading = false;
+			state.isErrorEditUser = true;
+			state.messageEditUser = action.payload;
+		});
+
+		// Delete User
+
+		builder.addCase(deleteUser.pending, state => {
+			state.isLoading = true;
+		});
+		builder.addCase(deleteUser.fulfilled, (state, action) => {
+			state.isLoading = false;
+			state.isSuccessDeleteUser = true;
+		});
+		builder.addCase(deleteUser.rejected, (state, action) => {
+			state.isLoading = false;
+			state.isErrorDeleteUser = true;
+			state.messageDeleteUser = action.payload;
 		});
 
 		// Get Data User

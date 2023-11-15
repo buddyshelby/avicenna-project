@@ -16,6 +16,11 @@ export const initialState = {
 	isSuccessEditUser: false,
 	messageEditUser: '',
 
+	userDeleteUser: null,
+	isErrorDeleteUser: false,
+	isSuccessDeleteUser: false,
+	messageDeleteUser: '',
+
 	userGetDataUser: null,
 	isErrorGetDataUser: false,
 	isSuccessGetDataUser: false,

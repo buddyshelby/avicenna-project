@@ -23,7 +23,7 @@ const ControllerTableUser = () => {
 
     },[isLoading, userGetAllDataUser, dispatch, navigate])
 
-    return !isLoading &&  <Layout />
+    return !isLoading &&  <Layout getAllUsers={userGetAllDataUser} />
 
 }
 

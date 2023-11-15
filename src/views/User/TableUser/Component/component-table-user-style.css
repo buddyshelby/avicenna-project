@@ -274,7 +274,7 @@
 }
 
 .content-listed {
-    width: 90px;
+    width: 115px;
     margin: 10px 10px;
     white-space: nowrap;
     display: flex;
@@ -290,6 +290,7 @@
     overflow-x: hidden;
 }
 .content-listed.header {
+    width: 115px;
     color: #B5B7C0;
     font-family: Poppins;
     overflow-x: hidden;
@@ -410,13 +411,14 @@
 }
 
 .table-user--bottom-table--pagination--right-arrow:hover,
-.table-user--bottom-table--pagination--number-list > div:hover,
+.table-user--bottom-table--pagination--number-list > div:hover:not(.not),
 .table-user--bottom-table--pagination--left-arrow:hover {
     background-color: #5932EA;
+    color: white;
 }
 
 .table-user--bottom-table--pagination--right-arrow,
-.table-user--bottom-table--pagination--number-list > div,
+.table-user--bottom-table--pagination--number-list > div:not(.not),
 .table-user--bottom-table--pagination--left-arrow {
     width: 28px;
     height: 28px;
@@ -429,6 +431,16 @@
     background-color: #EEEEEE;
     margin: 0 6px;
     transition: .4s;
+}
+
+.table-user--bottom-table--pagination--number-list > div.not {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 6px;
 }
 
 .table-user--bottom-table--pagination--number-list {

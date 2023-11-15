@@ -3,9 +3,6 @@ import componentStyles from './component-style.module.css'
 import { useRef, useEffect, useReducer } from 'react'
 import { useFetcher } from 'react-router-dom'
 import { useWindowSize } from '../../../Function/SeparateFunction'
-// name
-// type
-// value
 
 const initialState = {
     validName: true,
@@ -53,12 +50,12 @@ const listRole = [
     {id: 3, name: 'Pengajar'},
 ]
 
-const InputElement = ({ name, type, value, currentData, input, onChange }) => {
+const InputElement = ({ name, type, column, value, currentData, input, onChange }) => {
     if (input === 'name')
     return (
         <div className={componentStyles['input--element']}>
             <label htmlFor={name.replace(' ', '_').toLowerCase()}>{ name }</label>
-            <input onChange={(e) => {onChange(e, `${name.toUpperCase().split(' ')[1]}`)}} type={type} name={name.replace(' ', '_').toLowerCase()} placeholder={currentData ? currentData : value} autoComplete={type} />
+            <input onChange={(e) => {onChange(e, `${name.toUpperCase().split(' ')[1]}`)}} type={type} name={column} placeholder={currentData ? currentData : value} autoComplete={type} />
         </div>
     )
     else if (input === 'select')
@@ -66,8 +63,8 @@ const InputElement = ({ name, type, value, currentData, input, onChange }) => {
         <div className={`${componentStyles['input--element']} ${componentStyles['select']}`}>
             <label htmlFor={name.replace(' ', '_').toLowerCase()}>{ name }</label>
             <div>
-                <select id="dropdown" onChange={(e) => {onChange(e, `${name.toUpperCase()}`)}} name={name.replace(' ', '_').toLowerCase()} title={name.replace(' ', '_').toLowerCase()}>
-                    <option value={value} style={{ display: 'none' }}>{ value }</option>
+                <select id="dropdown" onChange={(e) => {onChange(e, `${name.toUpperCase()}`)}} name={column} title={name.replace(' ', '_').toLowerCase()}>
+                    <option value='' style={{ display: 'none' }}>{ value }</option>
                     {listRole.map((data, index) => {
                         return <option key={index} value={data.id}>{ data.name }</option>
                     })}
@@ -95,6 +92,7 @@ const EditUser = ({ getAllUsers, id_user }) => {
         {
             name: 'Edit Jabatan',
             type: 'name',
+            column: 'jabatan',
             value: 'Enter a Jabatan',
             currentData: jabatan,
             input: 'name'
@@ -102,6 +100,7 @@ const EditUser = ({ getAllUsers, id_user }) => {
         {
             name: 'Edit Address',
             type: 'name',
+            column: 'alamat',
             value: 'Enter a Address',
             currentData: alamat,
             input: 'name'
@@ -109,6 +108,7 @@ const EditUser = ({ getAllUsers, id_user }) => {
         {
             name: 'Edit Name',
             type: 'name',
+            column: 'name',
             value: 'Enter a Name',
             currentData: name,
             input: 'name'
@@ -116,20 +116,22 @@ const EditUser = ({ getAllUsers, id_user }) => {
         {
             name: 'Edit Full Name',
             type: 'name',
+            column: 'fullname',
             value: 'Enter a Full Name',
             currentData: fullname,
             input: 'name'
         },
-        {
-            name: 'Edit Username',
-            type: 'name',
-            value: 'Enter a Username',
-            currentData: username,
-            input: 'name'
-        },
+        // {
+            //     name: 'Edit Username',
+            //     type: 'name',
+            //     value: 'Enter a Username',
+            //     currentData: username,
+            //     input: 'name'
+            // },
         {
             name: 'Edit Email',
             type: 'email',
+            column: 'email',
             value: 'info@xyz.com',
             currentData: email,
             input: 'name'
@@ -137,6 +139,7 @@ const EditUser = ({ getAllUsers, id_user }) => {
         {
             name: 'Edit Phone',
             type: 'phone',
+            column: 'no_hp',
             value: '08xxxxxxxx',
             currentData: phone,
             input: 'name'
@@ -144,6 +147,7 @@ const EditUser = ({ getAllUsers, id_user }) => {
         {
             name: 'Edit Role',
             type: 'name',
+            column: 'id_role',
             value: [role_name.toUpperCase()[0], role_name.toLowerCase().substr(1)].join(''),
             input: 'select'
         },
@@ -164,7 +168,7 @@ const EditUser = ({ getAllUsers, id_user }) => {
     useEffect(() => {
         if (
         // state.validName === true &&
-        state.validUname === true &&
+        // state.validUname === true &&
         state.validPhone === true &&
         state.validEmail === true
         ) {
@@ -247,6 +251,7 @@ const EditUser = ({ getAllUsers, id_user }) => {
                                 <InputElement
                                 name={data.name}
                                 type={data.type}
+                                column={data.column}
                                 value={data.value}
                                 currentData={data.currentData}
                                 input={data.input}
@@ -259,7 +264,7 @@ const EditUser = ({ getAllUsers, id_user }) => {
                                 />
                                 {!state.validEmail && (data.name.toLowerCase().split(' ')[1] === 'email') && <span style={{ color: '#FF0C3E' }}>Please use valid Email.</span>}
                                 {initialState['validCheckDB'] === 'false' && (data.name.toLowerCase().split(' ')[1] === 'email') && <span style={{ color: '#FF0C3E' }}>Email Already Used</span>}
-                                {!state.validUname && (data.name.toLowerCase().split(' ')[1] === 'username') && <span style={{ color: '#FF0C3E' }}>Username Already Used</span>}
+                                {/* {!state.validUname && (data.name.toLowerCase().split(' ')[1] === 'username') && <span style={{ color: '#FF0C3E' }}>Username Already Used</span>} */}
                                 {!state.validPhone && (data.name.toLowerCase().split(' ')[1] === 'phone') && <span style={{ color: '#FF0C3E' }}>Please use valid Phone Number <br/>(Ex: 08xxxxxxxx).</span>}
                             </div>
                         )

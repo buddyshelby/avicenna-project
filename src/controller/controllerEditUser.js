@@ -20,16 +20,16 @@ const ControllerEditUser = () => {
             if (userGetAllDataUser === null) {
                 navigate('/')
             } else if (userGetAllDataUser.filter(item => item.id_user === id_user).length === 0) {
-                navigate('/addUser')
+                navigate('/tableUser')
             }
             
         }
     }, [id_user, userGetAllDataUser, isLoading, isSuccessEditUser, isErrorEditUser, navigate])
 
     if (isSuccessEditUser)
-        return <SuccessDisplay buttonValue="Back to Add Acoount" link="/editUser" reset={false}>Added Account Successfully</SuccessDisplay>
+        return <SuccessDisplay buttonValue="Back to Table User" link="/tableUser" reset={false}>Edited Account Successfully</SuccessDisplay>
     else if (isErrorEditUser)
-        return <FailedDisplay buttonValue="Back to Home" link="/">Failed to Added Account</FailedDisplay>
+        return <FailedDisplay buttonValue="Back to Home" link="/">Failed to Edited Account</FailedDisplay>
 
     return userGetAllDataUser && (userGetAllDataUser.filter(item => item.id_user === id_user).length !== 0) && <Layout getAllUsers={userGetAllDataUser} id_user={id_user} />
 }
@@ -51,32 +51,22 @@ export const loader = () => {
 export const action = async ({ request }) => {
 
     const data = await request.formData();
-    const allData = {}
-    const postData = {
-        id_role: data.get('edit_role'),
-        username: data.get('edit_username'),
-        password: data.get('edit_password'),
-        confPassword: data.get('edit_confirm_password'),
-        name: data.get('edit_name'),
-        fullname: data.get('edit_full_name'),
-        email: data.get('edit_email'),
-        alamat: data.get('edit_address'),
-        no_hp: data.get('edit_phone'),
-        jabatan: data.get('edit_jabatan'),
-    }
+    const url = request.url
+    const id_user = url.split(/.*\//)[1]
+
+    const allData = {id_user: id_user, update: {}}
 
     for (const pair of data.entries()) {
         const [name, value] = pair;
-        allData[name] = value
+        if (value !== '') {
+            allData['update'][name] = value
+        }
     }
 
-    console.log(allData);
-
-    // store.dispatch(reset())
-
-    // await store.dispatch(editUser(postData)).then(res => {
-    //     return {msg:'Create User Succeeded'}
-    // }).catch(err => {
-    //     return err
-    // })
+    store.dispatch(reset())
+    await store.dispatch(editUser(allData)).then(res => {
+        return {msg:'Edit User Succeeded'}
+    }).catch(err => {
+        return err
+    })
 }
