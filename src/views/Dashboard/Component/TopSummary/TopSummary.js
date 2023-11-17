@@ -1,6 +1,7 @@
 import { Img } from 'react-image'
 import imageStorage from '../../../../assets/Dashboard/imageStorage'
 import './top-summary.css'
+import './mobile-top-summary.css'
 
 const theData = [
     {

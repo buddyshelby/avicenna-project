@@ -1,22 +1,28 @@
 import './pie-graph.css'
+import './mobile-pie-graph.css'
 import { listOfColor } from '../listColor'
 import { useEffect, useState } from 'react';
 
 const theData = [
     {
-        id: 'admin',
-        name: 'Admin',
-        total: 900
+        id: 'siswa',
+        name: 'Siswa',
+        total: 350
     },
     {
-        id: 'staff',
-        name: 'Staff',
-        total: 1000
+        id: 'alumni',
+        name: 'Alumni',
+        total: 642
     },
     {
         id: 'guru',
         name: 'Guru',
-        total: 700
+        total: 127
+    },
+    {
+        id: 'staff',
+        name: 'Staff',
+        total: 331
     },
 ]
 
