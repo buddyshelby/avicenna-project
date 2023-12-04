@@ -28,6 +28,8 @@ export const MenuListChild = ({ item, setNavbarActiveClick, navbarActiveClick, m
         if (item.link)
         navigate(`/${item.link}`)
 
+        console.log(item);
+
     }
     return (
         <div className={`navbar--menu-list${menuChild ? '--child animate' : ''} ${navbarHide}`} key={item.id} onClick={() => navbarClickHandler(menuChild ? item.link : item.id)} onMouseEnter={navbarActiveHandler} onMouseLeave={navbarNonActiveHandler} style={{ background: navbarActiveClick === item.link && '#5932ea' }}>
@@ -40,7 +42,11 @@ export const MenuListChild = ({ item, setNavbarActiveClick, navbarActiveClick, m
             {item.children && <Img
             src={imageStorage['right-arrow']}
             loader={<ImageLoading size="4px, 8px"/>}
-            style={{ width: '4px', height: '8px', filter: (navbarActive[`nav${item.id}`] || navbarActiveClick === item.link) && 'brightness(100)' }}
+            style={{ width: '4px', height: '8px',
+                     filter: (navbarActive[`nav${item.id}`] || navbarActiveClick === item.link) && 'brightness(100)',
+                     transform: (navbarActiveClick === item.id) && `rotate(90deg)`
+
+                  }}
             />}
         </div>
     )

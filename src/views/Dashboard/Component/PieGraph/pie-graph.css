@@ -8,6 +8,7 @@
 
 .pieID {
   display: block;
+  margin-top: 100px;
 }
 
 .pie {
@@ -85,4 +86,11 @@
 
 .dashboard--pie--data--column > span {
   margin: 0 2.5px;
+  font-family: DM Sans;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: #A3AED0;
 }

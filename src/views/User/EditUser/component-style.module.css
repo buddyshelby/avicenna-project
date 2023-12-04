@@ -45,16 +45,17 @@
 
 .button {
     width: 90px;
-    height: 50px;
     border: none;
     padding: 13px;
     margin-top: 80px;
+    margin-left: 13px;
 
     color: #FFF;
     text-align: center;
     font-family: Poppins;
     font-size: 16.156px;
     font-weight: 600;
+    cursor: pointer;
 
     border-radius: 8.078px;
     background: #1E2772;

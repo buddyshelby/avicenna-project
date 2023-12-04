@@ -37,8 +37,8 @@
 @media (max-width: 400px) {
 
     .table-user--section {
-        width: calc(100% - 70px);
-        padding: 0 0 0 70px;
+        width: 100%;
+        padding: 0 0 0 20px;
     }
 
     .table-user--greeting {

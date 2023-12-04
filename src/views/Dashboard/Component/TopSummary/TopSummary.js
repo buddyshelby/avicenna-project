@@ -1,6 +1,7 @@
 import { Img } from 'react-image'
 import imageStorage from '../../../../assets/Dashboard/imageStorage'
 import './top-summary.css'
+import './mobile-top-summary.css'
 
 const theData = [
     {
@@ -33,7 +34,7 @@ const TopSummary = () => {
                 {theData.map((item, index) => {
 
                     return (
-                        <div className='dashboard--top-summary--column'>
+                        <div key={index} className='dashboard--top-summary--column'>
                             <div className="dashboard--top-summary--icon">
                                 <Img src={imageStorage['statis-icon-1']} />
                             </div>
