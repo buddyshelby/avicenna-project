@@ -34,7 +34,7 @@ const TopSummary = () => {
                 {theData.map((item, index) => {
 
                     return (
-                        <div className='dashboard--top-summary--column'>
+                        <div key={index} className='dashboard--top-summary--column'>
                             <div className="dashboard--top-summary--icon">
                                 <Img src={imageStorage['statis-icon-1']} />
                             </div>

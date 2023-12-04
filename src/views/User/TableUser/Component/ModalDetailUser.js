@@ -23,7 +23,8 @@ export const ModaDetailUser = ({ setModal, id_user }) => {
     }
 
     const deleteHandler = () => {
-        navigate(`/deleteUser/${id_user}`)
+        if (window.confirm('Are you sure you want to delete this item?'))
+            navigate(`/deleteUser/${id_user}`)
     }
 
     return (

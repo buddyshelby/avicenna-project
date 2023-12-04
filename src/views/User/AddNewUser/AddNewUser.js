@@ -1,7 +1,7 @@
 import styles from './add-user.module.css'
 import componentStyles from './component-style.module.css'
 import { useRef, useEffect, useReducer } from 'react'
-import { useFetcher } from 'react-router-dom'
+import { useFetcher, useNavigate } from 'react-router-dom'
 import { useWindowSize } from '../../../Function/SeparateFunction'
 // name
 // type
@@ -126,6 +126,9 @@ const listRole = [
 ]
 
 const InputElement = ({ name, type, value, input, onChange }) => {
+
+    const navigate = useNavigate()
+
     if (input === 'name')
     return (
         <div className={componentStyles['input--element']}>
@@ -149,7 +152,10 @@ const InputElement = ({ name, type, value, input, onChange }) => {
     )
     else if (input === 'button')
     return (
-        <input className={componentStyles['button']} style={onChange} type={name} value={value} />
+        <div style={{ display: 'flex' }}>
+            <input className={componentStyles['button']} style={onChange} type={name} value={value} />
+            <div className={componentStyles['button']} onClick={() => navigate('/tableUser')}>Back</div>
+        </div>
     )
 }
 

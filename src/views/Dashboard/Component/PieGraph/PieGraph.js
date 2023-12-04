@@ -1,6 +1,6 @@
 import './pie-graph.css'
 import './mobile-pie-graph.css'
-import { listOfColor } from '../listColor'
+import { listOfColor as listOfColors } from '../listColor'
 import { useEffect, useState } from 'react';
 
 const theData = [
@@ -25,6 +25,26 @@ const theData = [
         total: 331
     },
 ]
+
+const listOfColor = []
+
+const randColor = () => {
+    for (let i = 0; i < theData.length;i++) {
+        const num = [Math.floor(Math.random() * 6)]
+        let check = listOfColor.filter(item => item === num[0])[0]
+        if (check !== undefined)
+            while (check !== undefined) {
+                num.pop()
+                num.push(Math.floor(Math.random() * 6))     
+                check = listOfColor.filter(item => item === num[0])[0]
+            }
+        
+        listOfColor.push(num[0]);
+    }
+}
+
+randColor()
+console.log(listOfColor);
 
 const PieGraph = () => {
 
@@ -67,7 +87,7 @@ const PieGraph = () => {
     
                 theData.forEach((value, i) => {
                 const size = sliceSize(value.total, listTotal);
-                iterateSlices(size, offset, i, 0, listOfColor[i]);
+                iterateSlices(size, offset, i, 0, listOfColors[listOfColor[i]]);
                 offset += size;
                 });
             };
@@ -94,8 +114,8 @@ const PieGraph = () => {
                 {theData.map((item, index) => {
                     
                     return (
-                        <div className='dashboard--pie--data--column'>
-                            <div className='dashboard--pie--data--color' style={{ background: listOfColor[index] }}></div>
+                        <div key={index} className='dashboard--pie--data--column'>
+                            <div className='dashboard--pie--data--color' style={{ background: listOfColors[listOfColor[index]] }}></div>
                             <span>{item.name}</span>
                         </div>
                     )
